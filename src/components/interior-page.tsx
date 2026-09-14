@@ -1,31 +1,292 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Star } from "lucide-react";
+import { 
+  ArrowRight, 
+  Award, 
+  BadgeCheck, 
+  CheckCircle2, 
+  Clock, 
+  Mail, 
+  MapPin, 
+  Phone, 
+  ShieldCheck, 
+  Sparkles, 
+  Star 
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SitePage } from "@/components/site-layout";
+import { SitePage } from "@/components/site/SiteLayout";
+import { Services } from "@/components/site/Services";
+import { Gallery } from "@/components/site/Gallery";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Estimate } from "@/components/site/Estimate";
+import { FAQ } from "@/components/site/FAQ";
+import { FloatingConcierge } from "@/components/site/FloatingConcierge";
+import { images } from "@/lib/images";
 
 type Kind = "about" | "services" | "projects" | "reviews" | "contact";
 
 const pageData = {
-  about: { eyebrow: "Established 2014", title: "Built On Skill. Guided By Integrity.", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2200&q=85" },
-  services: { eyebrow: "Complete Home Improvement", title: "One Team. Every Detail.", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2200&q=85" },
-  projects: { eyebrow: "Selected Work", title: "Spaces Made Better.", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2200&q=85" },
-  reviews: { eyebrow: "Client Experience", title: "Trust Earned On Every Project.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85" },
-  contact: { eyebrow: "Start A Conversation", title: "Let’s Talk About Your Project.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85" },
+  about: { 
+    eyebrow: "Established 2014 • 11+ Years of Mastery", 
+    title: "Built On Skill. Guided By Integrity.", 
+    image: images.craft 
+  },
+  services: { 
+    eyebrow: "Comprehensive Disciplines", 
+    title: "One Master Team. Every Refined Detail.", 
+    image: images.kitchen 
+  },
+  projects: { 
+    eyebrow: "Selected Portfolio Works", 
+    title: "Enduring Spaces Made Extraordinary.", 
+    image: images.livingRoom 
+  },
+  reviews: { 
+    eyebrow: "5.0-Star Client Satisfaction", 
+    title: "Trust Earned On Every Single Home.", 
+    image: images.bathroom 
+  },
+  contact: { 
+    eyebrow: "Start A Conversation", 
+    title: "Let's Bring Your Architectural Vision To Life.", 
+    image: images.hero 
+  },
 } as const;
 
 export function InteriorPage({ kind }: { kind: Kind }) {
   const data = pageData[kind];
-  return <SitePage {...data}>{kind === "about" ? <About /> : kind === "services" ? <Services /> : kind === "projects" ? <Projects /> : kind === "reviews" ? <Reviews /> : <Contact />}</SitePage>;
+  return (
+    <>
+      <SitePage {...data}>
+        {kind === "about" ? (
+          <AboutContent />
+        ) : kind === "services" ? (
+          <ServicesContent />
+        ) : kind === "projects" ? (
+          <ProjectsContent />
+        ) : kind === "reviews" ? (
+          <ReviewsContent />
+        ) : (
+          <ContactContent />
+        )}
+      </SitePage>
+      <FloatingConcierge />
+    </>
+  );
 }
 
-function Shell({ label, title, children }: { label: string; title: string; children: React.ReactNode }) { return <section className="bg-background py-24 lg:py-32"><div className="mx-auto max-w-[1200px] px-5 lg:px-10"><p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">{label}</p><h2 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">{title}</h2>{children}</div></section>; }
+function AboutContent() {
+  const values = [
+    {
+      title: "Family-Owned Accountability",
+      desc: "We are not a bloated franchise. Our founders and senior superintendents walk every job site personally, ensuring our family name remains synonymous with perfection.",
+    },
+    {
+      title: "Uncompromising Fixed Pricing",
+      desc: "Our line-by-line proposals reflect true real-world costs. We do not underbid to win work and hit you with change orders later.",
+    },
+    {
+      title: "Clean Site & Living Protection",
+      desc: "Remodeling shouldn't disrupt your health. We deploy zippered air containment barriers and HEPA scrubbers daily to maintain pristine air quality.",
+    },
+    {
+      title: "Licensed Master Tradesmen",
+      desc: "Every mechanical, structural, and finish detail is executed by certified tradesmen possessing decades of specialized tenure.",
+    },
+  ];
 
-function About() { return <Shell label="Our Standard" title="Professional craftsmanship meets personal accountability."><div className="mt-14 grid gap-10 lg:grid-cols-2"><p className="text-xl leading-8">Progress Interior Designs is a family-owned home improvement company serving homeowners and commercial clients since 2014.</p><div className="space-y-5 text-muted-foreground"><p>We approach every project with clear communication, careful planning, and respect for the space. Our work spans foundation repair, remodeling, flooring, painting, basement finishing, and dependable handyman service.</p><p>The result is a more coordinated experience and work built to last.</p><Button asChild className="mt-4"><Link to="/contact">Discuss Your Project <ArrowRight /></Link></Button></div></div></Shell>; }
+  return (
+    <div className="bg-background">
+      {/* Narrative Section */}
+      <section className="py-24 lg:py-32 border-b border-border/20">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-2 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
+                Our Story & Philosophy
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                A Decade of Architectural Dedication.
+              </h2>
+              <div className="mt-6 space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <p>
+                  Founded in 2014, Progress Interior Designs emerged with a singular purpose: to rescue homeowners from contractor stress through transparent communication, predictable scheduling, and museum-grade finish quality.
+                </p>
+                <p>
+                  Over the past 11+ years, we have grown from a boutique architectural millwork shop into a premier general contracting firm specializing in luxury kitchens, spa bathrooms, whole-home reconfigurations, and structural foundation restoration.
+                </p>
+                <p>
+                  Every home we enter is treated with profound respect. We understand that we are not merely building structures; we are crafting the sanctuary in which your family creates memories.
+                </p>
+              </div>
 
-function Services() { const list=[["01","Foundation Repair"],["02","General Contracting"],["03","Flooring Installation"],["04","Drywall & Painting"],["05","Basement Finishing"],["06","Handyman Services"]]; return <Shell label="Capabilities" title="Comprehensive expertise, thoughtfully delivered."><div className="mt-16 border-t border-border">{list.map(([n,t])=><div key={n} className="group grid grid-cols-[50px_1fr_auto] items-center border-b border-border py-7"><span className="text-xs font-bold text-primary">{n}</span><h3 className="text-xl font-bold md:text-3xl">{t}</h3><ArrowRight className="transition-transform group-hover:translate-x-2" /></div>)}</div></Shell>; }
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-12 px-7 rounded-full font-bold text-xs">
+                  <Link to="/contact">Request Free 3D Consultation →</Link>
+                </Button>
+                <a href="tel:8164623599" className="text-xs font-bold text-foreground hover:text-primary flex items-center gap-2 py-2 px-4 rounded-full border border-border/40">
+                  <Phone className="w-3.5 h-3.5 text-primary" /> (816) 462-3599
+                </a>
+              </div>
+            </div>
 
-function Projects() { const items=[["https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=80","Complete Home Renovation"],["https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80","Bathroom Transformation"],["https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=80","Flooring & Finish Work"],["https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1200&q=80","Basement Finishing"]]; return <Shell label="Recent Projects" title="A closer look at the work."><div className="mt-14 grid auto-rows-[340px] gap-4 md:grid-cols-2">{items.map(([img,t],i)=><article key={t} className={`group relative overflow-hidden bg-ink ${i===0?"md:row-span-2":""}`}><img src={img} alt={t} className="size-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-60" loading="lazy"/><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink p-7 pt-20 text-background"><p className="text-xs uppercase tracking-widest text-primary">Renovation</p><h3 className="mt-2 text-2xl font-bold">{t}</h3></div></article>)}</div></Shell>; }
+            <div className="relative">
+              <div className="rounded-3xl overflow-hidden border border-border/40 shadow-2xl">
+                <img
+                  src={images.detail}
+                  alt="Architectural detail in a luxury home"
+                  className="w-full h-[480px] object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl border border-primary/30 max-w-xs shadow-2xl hidden sm:block">
+                <p className="text-primary text-xs font-bold uppercase tracking-widest">Licensed & Insured</p>
+                <strong className="block font-display text-2xl font-bold text-foreground mt-1">General Contractor</strong>
+                <p className="text-[11px] text-muted-foreground mt-1">License #GC-89421-B • $2,000,000 Liability</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-function Reviews() { const reviews=["The attention to detail was exceptional, and every step was communicated clearly.","Professional, clean, dependable, and truly invested in the finished work.","A reliable team with the experience to handle the project properly."]; return <Shell label="Client Reviews" title="Quality is remembered long after the work is done."><div className="mt-14 grid gap-px bg-border lg:grid-cols-3">{reviews.map((r,i)=><article key={r} className="bg-background p-8"><div className="flex gap-1">{Array.from({length:5}).map((_,n)=><Star key={n} className="size-4 fill-primary text-primary" />)}</div><blockquote className="mt-8 text-xl leading-8">“{r}”</blockquote><p className="mt-8 text-xs font-bold uppercase tracking-wider text-muted-foreground">Verified client {i+1}</p></article>)}</div></Shell>; }
+      {/* Core Principles Grid */}
+      <section className="py-24 bg-secondary/35 border-b border-border/30">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h3 className="font-display text-3xl font-extrabold text-foreground">
+              The Four Pillars of Our Craft
+            </h3>
+            <p className="text-xs text-muted-foreground mt-2">
+              Our non-negotiable promises to every client we serve.
+            </p>
+          </div>
 
-function Contact() { return <Shell label="Free Estimate" title="Tell us what you want to improve."><div className="mt-14 grid gap-12 lg:grid-cols-[.7fr_1.3fr]"><div><p className="leading-7 text-muted-foreground">Contact the team for an estimate, project question, or emergency service request.</p><div className="mt-8 border-l-2 border-primary pl-5"><strong className="block">24/7 Emergency Service</strong><span className="text-sm text-muted-foreground">Help when you need it most.</span></div></div><form className="grid gap-6 sm:grid-cols-2" onSubmit={(e)=>e.preventDefault()}>{["Name","Phone","Email","Address"].map(x=><label key={x} className="border-b border-border pb-3 text-xs font-bold uppercase tracking-wider">{x}<input required className="mt-3 block w-full bg-transparent text-base font-normal outline-none" /></label>)}<label className="border-b border-border pb-3 text-xs font-bold uppercase tracking-wider sm:col-span-2">Message<textarea rows={5} className="mt-3 block w-full resize-none bg-transparent text-base font-normal outline-none" /></label><Button size="lg" className="sm:col-span-2">Request a Free Estimate <ArrowRight /></Button></form></div></Shell>; }
+          <div className="grid gap-6 sm:grid-cols-2">
+            {values.map((val) => (
+              <div key={val.title} className="p-8 rounded-3xl glass-card border border-border/40 space-y-3">
+                <div className="flex items-center gap-2.5 text-primary font-bold text-base">
+                  <CheckCircle2 className="w-5 h-5 shrink-0" />
+                  <span>{val.title}</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {val.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ServicesContent() {
+  return (
+    <div>
+      <Services />
+      <FAQ />
+    </div>
+  );
+}
+
+function ProjectsContent() {
+  return (
+    <div>
+      <Gallery />
+      <section className="py-20 bg-secondary/35 text-center border-t border-border/30">
+        <div className="max-w-2xl mx-auto px-5 space-y-4">
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+            Inspired by What You See?
+          </h3>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            Schedule an on-site consultation to explore materials, 3D renderings, and transparent project estimates.
+          </p>
+          <Button asChild size="lg" className="bg-primary text-primary-foreground btn-glow h-12 px-8 rounded-full font-bold text-xs">
+            <Link to="/contact">Discuss Your Space Today →</Link>
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ReviewsContent() {
+  return (
+    <div>
+      <Testimonials />
+      <section className="py-20 bg-background text-center border-t border-border/20">
+        <div className="max-w-xl mx-auto px-5 space-y-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">Join 1,200+ Delighted Homeowners</span>
+          <h3 className="font-display text-3xl font-bold text-foreground">
+            Ready to Experience the Difference?
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            Get in touch today for an honest, fixed-price consultation.
+          </p>
+          <Button asChild size="lg" className="bg-primary text-primary-foreground btn-glow h-12 px-8 rounded-full font-bold text-xs">
+            <Link to="/contact">Request Your Free 3D Estimate →</Link>
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ContactContent() {
+  return (
+    <div>
+      <Estimate />
+      
+      {/* Contact Details Bar */}
+      <section className="py-20 bg-secondary/35 border-t border-border/30">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            
+            <div className="p-6 rounded-2xl glass-card border border-border/30 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-4">
+                <Phone className="w-5 h-5" />
+              </div>
+              <h4 className="font-display font-bold text-sm text-foreground">Direct Telephone</h4>
+              <p className="text-xs text-muted-foreground">Speak directly with our superintendent</p>
+              <a href="tel:8164623599" className="text-sm font-bold text-primary block pt-1 hover:underline">
+                (816) 462-3599
+              </a>
+            </div>
+
+            <div className="p-6 rounded-2xl glass-card border border-border/30 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-4">
+                <Mail className="w-5 h-5" />
+              </div>
+              <h4 className="font-display font-bold text-sm text-foreground">Email Communications</h4>
+              <p className="text-xs text-muted-foreground">Send plans, blueprints & inquiries</p>
+              <a href="mailto:pid.2014.d@gmail.com" className="text-xs font-bold text-primary block pt-1 hover:underline truncate">
+                pid.2014.d@gmail.com
+              </a>
+            </div>
+
+            <div className="p-6 rounded-2xl glass-card border border-border/30 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-4">
+                <Clock className="w-5 h-5" />
+              </div>
+              <h4 className="font-display font-bold text-sm text-foreground">Operating Schedule</h4>
+              <p className="text-xs text-muted-foreground">Monday – Saturday</p>
+              <p className="text-xs font-bold text-foreground">7:30 AM – 6:30 PM</p>
+              <p className="text-[11px] text-primary font-bold">24/7 Emergency Support</p>
+            </div>
+
+            <div className="p-6 rounded-2xl glass-card border border-border/30 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-4">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <h4 className="font-display font-bold text-sm text-foreground">Location & Radius</h4>
+              <p className="text-xs font-bold text-foreground">Grandview, MO 64030</p>
+              <p className="text-xs text-muted-foreground">Greater KC Metro & Surrounding</p>
+              <p className="text-[11px] text-muted-foreground">Licensed GC #GC-89421-B</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <FAQ />
+    </div>
+  );
+}
