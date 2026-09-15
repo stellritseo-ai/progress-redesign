@@ -59,7 +59,7 @@ export function Welcome() {
                   </div>
                   <div>
                     <span className="block text-[11px] sm:text-[11.5px] font-bold text-foreground leading-tight">Master Guild Standard</span>
-                    <span className="block text-[9.5px] sm:text-[10px] text-muted-foreground uppercase tracking-wider">Licensed GC #GC-89421-B</span>
+                    <span className="block text-[9.5px] sm:text-[10px] text-muted-foreground uppercase tracking-wider">Uncompromising Quality</span>
                   </div>
                 </div>
                 <span className="hidden sm:inline-flex items-center gap-1 text-[10.5px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20">

@@ -31,8 +31,8 @@ const faqs: FAQItem[] = [
   {
     id: "fixed-price",
     number: "02",
-    question: "How does your Fixed-Price Guarantee work? Can costs increase mid-project?",
-    answer: "Unlike traditional contractors who operate on ambiguous 'time and materials' with frequent cost overruns, Progress operates strictly on line-item fixed proposals. Every fixture, stone slab, structural beam, and labor hour is priced down to the penny before demolition starts. Unless you request an explicit change of scope in writing, your contract price will never increase by a single cent."
+    question: "Free Estimates & Transparent Pricing",
+    answer: "We provide a free estimate before starting any work. Pricing is based on the specific job and scope of work. If additional work is requested or required beyond the original scope, additional charges may apply based on the nature and extent of the extra work. We will communicate any additional costs with you and obtain your approval before proceeding with the additional work."
   },
   {
     id: "live-in",
@@ -43,8 +43,8 @@ const faqs: FAQItem[] = [
   {
     id: "licenses-warranty",
     number: "04",
-    question: "Are you licensed, bonded, and insured? What warranties do you offer?",
-    answer: "Yes. Progress is fully licensed as a Master General Contractor, bonded, and carries a comprehensive $2,000,000 commercial general liability policy along with full workers' compensation on all craftspeople. Furthermore, all load-bearing structural modifications and foundation underpinning work are backed by our industry-leading 20-Year Transferable Structural Warranty."
+    question: "What warranties do you offer?",
+    answer: "All load-bearing structural modifications and foundation underpinning work are backed by our industry-leading 20-Year Transferable Structural Warranty."
   },
   {
     id: "3d-design",
@@ -103,7 +103,7 @@ export function FAQ() {
             <div className="space-y-2.5 pt-2">
               <div className="flex items-start sm:items-center gap-2.5 text-xs font-semibold text-foreground/90">
                 <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" />
-                <span>100% Fixed-Price Contract Guarantee — Zero Surprise Overruns</span>
+                <span>Free Estimates & Transparent Pricing</span>
               </div>
               <div className="flex items-start sm:items-center gap-2.5 text-xs font-semibold text-foreground/90">
                 <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" />
@@ -111,7 +111,7 @@ export function FAQ() {
               </div>
               <div className="flex items-start sm:items-center gap-2.5 text-xs font-semibold text-foreground/90">
                 <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" />
-                <span>Fully Licensed, Bonded & Insured with 20-Year Structural Warranty</span>
+                <span>20-Year Structural Warranty</span>
               </div>
             </div>
 

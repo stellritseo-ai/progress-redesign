@@ -207,7 +207,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               </div>
               <span className="text-border/60">|</span>
               <span className="text-primary font-bold inline-flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5" /> Licensed & $2M Insured
+                <ShieldCheck className="w-3.5 h-3.5" /> High Quality Workmanship
               </span>
             </div>
           </div>
@@ -801,7 +801,7 @@ export function Footer() {
             <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5 max-w-sm backdrop-blur-md">
               <div className="flex items-center gap-2 text-primary text-xs font-bold">
                 <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
-                <span>Licensed Master General Contractor</span>
+                <span>Master Quality Contractor</span>
               </div>
               <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.08] text-[11px]">
                 <div>

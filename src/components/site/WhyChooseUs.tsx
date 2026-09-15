@@ -22,8 +22,8 @@ export function WhyChooseUs() {
   const features = [
     {
       icon: FileText,
-      title: "100% Fixed-Price Guarantee",
-      desc: "Detailed, line-item contracts ensure that the price you sign is the price you pay. No sudden surcharges or unauthorized change orders.",
+      title: "Free Estimates & Transparent Pricing",
+      desc: "We provide a free estimate before starting any work. Pricing is based on the specific job and scope of work.",
     },
     {
       icon: Sparkles,
@@ -47,8 +47,8 @@ export function WhyChooseUs() {
     },
     {
       icon: Award,
-      title: "Fully Licensed, Bonded & Insured",
-      desc: "General Contractor License #GC-89421-B with $2,000,000 comprehensive commercial liability and full worker's compensation.",
+      title: "Commitment to Quality",
+      desc: "We maintain high standards of quality and safety in all our projects to ensure your peace of mind.",
     },
     {
       icon: Clock,
@@ -58,15 +58,15 @@ export function WhyChooseUs() {
     {
       icon: HardHat,
       title: "Master Craftsmen in Every Trade",
-      desc: "All electrical, plumbing, structural carpentry, and tile mechanics are performed by seasoned, background-checked craftsmen.",
+      desc: "All basic electrical, plumbing, structural carpentry, and tile mechanics are performed by seasoned, background-checked craftsmen.",
     },
   ];
 
   const trustStats = [
     { value: "11+", label: "Years Experience" },
-    { value: "$2M", label: "Insured & Bonded" },
     { value: "1,200+", label: "Homes Handcrafted" },
     { value: "5-Yr", label: "Written Warranty" },
+    { value: "Quality", label: "Workmanship Guarantee" },
   ];
 
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -127,7 +127,7 @@ export function WhyChooseUs() {
 
             {/* Subtext */}
             <p className="text-muted-foreground text-sm sm:text-[15px] leading-relaxed mb-7 font-normal max-w-xl">
-              Over a decade of master-grade renovation across the region — trusted by hundreds of homeowners seeking surgical craftsmanship, fixed-price accountability, and white-glove respect for your home.
+              Over a decade of master-grade renovation across the region — trusted by hundreds of homeowners seeking surgical craftsmanship, transparent accountability, and white-glove respect for your home.
             </p>
 
             {/* 8 Features Grid (2 Columns) */}

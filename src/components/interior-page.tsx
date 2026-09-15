@@ -19,7 +19,6 @@ import { Gallery } from "@/components/site/Gallery";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Estimate } from "@/components/site/Estimate";
 import { FAQ } from "@/components/site/FAQ";
-import { FloatingConcierge } from "@/components/site/FloatingConcierge";
 import { images } from "@/lib/images";
 
 type Kind = "about" | "services" | "projects" | "reviews" | "contact";
@@ -69,7 +68,6 @@ export function InteriorPage({ kind }: { kind: Kind }) {
           <ContactContent />
         )}
       </SitePage>
-      <FloatingConcierge />
     </>
   );
 }
@@ -89,7 +87,7 @@ function AboutContent() {
       desc: "Remodeling shouldn't disrupt your health. We deploy zippered air containment barriers and HEPA scrubbers daily to maintain pristine air quality.",
     },
     {
-      title: "Licensed Master Tradesmen",
+      title: "Master Tradesmen",
       desc: "Every mechanical, structural, and finish detail is executed by certified tradesmen possessing decades of specialized tenure.",
     },
   ];
@@ -138,9 +136,9 @@ function AboutContent() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl border border-primary/30 max-w-xs shadow-2xl hidden sm:block">
-                <p className="text-primary text-xs font-bold uppercase tracking-widest">Licensed & Insured</p>
-                <strong className="block font-display text-2xl font-bold text-foreground mt-1">General Contractor</strong>
-                <p className="text-[11px] text-muted-foreground mt-1">License #GC-89421-B • $2,000,000 Liability</p>
+                <p className="text-primary text-xs font-bold uppercase tracking-widest">Commitment to Quality</p>
+                <strong className="block font-display text-2xl font-bold text-foreground mt-1">Master Workmanship</strong>
+                <p className="text-[11px] text-muted-foreground mt-1">High Quality Guaranteed</p>
               </div>
             </div>
           </div>
@@ -279,7 +277,7 @@ function ContactContent() {
               <h4 className="font-display font-bold text-sm text-foreground">Location & Radius</h4>
               <p className="text-xs font-bold text-foreground">Grandview, MO 64030</p>
               <p className="text-xs text-muted-foreground">Greater KC Metro & Surrounding</p>
-              <p className="text-[11px] text-muted-foreground">Licensed GC #GC-89421-B</p>
+              <p className="text-[11px] text-muted-foreground">Master Quality</p>
             </div>
 
           </div>

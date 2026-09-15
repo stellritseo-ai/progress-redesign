@@ -35,7 +35,7 @@ export function Process() {
       title: "Master Craftsmanship Execution",
       tag: "Phase 3: Build",
       icon: Hammer,
-      desc: "Licensed tradesmen execute the build under strict clean-site protocols (HEPA air scrubbers and floor shielding), with daily digital progress updates sent to your phone.",
+      desc: "Experienced tradesmen execute the build under strict clean-site protocols (HEPA air scrubbers and floor shielding), with daily digital progress updates sent to your phone.",
       deliverable: "Dedicated project superintendent & daily milestone tracking",
     },
     {

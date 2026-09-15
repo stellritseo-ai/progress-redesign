@@ -155,7 +155,7 @@ export function Services() {
               <span className="gradient-text-gold">Engineered to Endure.</span>
             </h2>
             <p className="mt-3.5 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Every discipline is executed in-house by licensed tradesmen and dedicated project superintendents — backed by guaranteed fixed pricing and 5-year written craftsmanship warranties.
+              Every discipline is executed in-house by experienced tradesmen and dedicated project superintendents — backed by transparent pricing and 5-year written craftsmanship warranties.
             </p>
           </div>
 

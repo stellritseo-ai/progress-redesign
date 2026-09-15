@@ -39,7 +39,7 @@ export function Hero() {
               ))}
             </span>
             <span className="text-foreground text-[10px] sm:text-[11.5px] leading-tight font-medium">
-              11+ Years Master Craftsmanship &bull; Licensed &amp; $2M Insured
+              11+ Years Master Craftsmanship &bull; High Quality Workmanship
             </span>
           </div>
 
@@ -51,7 +51,7 @@ export function Hero() {
 
           {/* Subtext */}
           <p className="mt-3.5 sm:mt-5 text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg sm:max-w-2xl font-normal">
-            From bespoke kitchen &amp; master bath transformations to full-home structural renovations and architectural millwork. We bring decades of licensed expertise, fixed pricing, and white-glove execution to every home.
+            From bespoke kitchen &amp; master bath transformations to full-home structural renovations and architectural millwork. We bring decades of expertise, transparent pricing, and white-glove execution to every home.
           </p>
 
           {/* CTAs */}
@@ -73,10 +73,10 @@ export function Hero() {
         <div className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-border/25 w-full overflow-x-auto no-scrollbar">
           <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 sm:gap-2.5 min-w-max sm:min-w-0">
             {[
-              { icon: ShieldCheck, label: "Licensed General Contractor" },
-              { icon: BadgeCheck, label: "$2M General Liability" },
+              { icon: ShieldCheck, label: "Commitment to Safety" },
+              { icon: BadgeCheck, label: "High Quality Workmanship" },
               { icon: Sparkles, label: "5-Year Craftsmanship Warranty" },
-              { icon: CheckCircle2, label: "100% Fixed-Price Guarantee" },
+              { icon: CheckCircle2, label: "Free Estimates & Transparent Pricing" },
               { icon: ShieldCheck, label: "Dust-Controlled Clean Sites" },
             ].map(({ icon: Icon, label }) => (
               <a
@@ -102,8 +102,8 @@ export function Stats() {
     { icon: Award, number: "11+", label: "Years of Master Excellence", sub: "Serving Metro Area Discerning Homeowners" },
     { icon: Building2, number: "1,200+", label: "Completed Transformations", sub: "Bespoke Kitchens, Baths & Full Estates" },
     { icon: Star, number: "99.4%", label: "Verified Client Satisfaction", sub: "500+ Independently Rated 5-Star Reviews" },
-    { icon: ShieldCheck, number: "$2M", label: "Comprehensive Liability", sub: "Fully Bonded, State-Licensed & Insured" },
-    { icon: BadgeCheck, number: "100%", label: "Guaranteed Fixed-Price", sub: "Line-Item Scope - Zero Hidden Surcharges" },
+    { icon: ShieldCheck, number: "100%", label: "Commitment to Quality", sub: "High Quality Workmanship & Safety" },
+    { icon: BadgeCheck, number: "100%", label: "Transparent Pricing", sub: "Free Estimates - Clear Scope of Work" },
     { icon: Sparkles, number: "5-Year", label: "Written Master Warranty", sub: "Total Craftsmanship & Structural Protection" },
   ];
   const marqueeItems = [...stats, ...stats];

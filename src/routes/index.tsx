@@ -11,7 +11,6 @@ import { Gallery } from "@/components/site/Gallery";
 import { Testimonials } from "@/components/site/Testimonials";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 import { FAQ } from "@/components/site/FAQ";
-import { FloatingConcierge } from "@/components/site/FloatingConcierge";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -19,7 +18,7 @@ export const Route = createFileRoute("/")({
       { title: "Progress Interior Designs | Luxury Architectural Renovation & Contracting" },
       {
         name: "description",
-        content: "High-end residential and commercial renovations, luxury kitchen & bath transformations, foundation repair, and architectural millwork. Family-owned, licensed, and insured with 11+ years of master craftsmanship."
+        content: "High-end residential and commercial renovations, luxury kitchen & bath transformations, foundation repair, and architectural millwork. Family-owned with 11+ years of master craftsmanship."
       },
       { property: "og:title", content: "Progress Interior Designs | Luxury Architectural Renovation & Contracting" },
       { property: "og:description", content: "Master craftsmanship, transparent fixed pricing, and white-glove execution for discerning homeowners." },
@@ -46,7 +45,6 @@ function Index() {
       {/* <Featured /> */}
       <EmergencyCTA />
       <FAQ />
-      <FloatingConcierge />
     </SiteLayout>
   );
 }

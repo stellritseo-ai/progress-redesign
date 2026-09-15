@@ -71,7 +71,7 @@ export function EmergencyCTA() {
                 <span className="hidden sm:inline-block h-1 w-1 rounded-full bg-primary/50" />
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
-                  Licensed & Insured Master Contractors
+                  Master Quality Contractors
                 </span>
                 <span className="hidden sm:inline-block h-1 w-1 rounded-full bg-primary/50" />
                 <span className="flex items-center gap-1.5">
