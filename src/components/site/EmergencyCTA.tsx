@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Phone, ShieldCheck, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/heroprogress.mp4";
@@ -102,10 +103,10 @@ export function EmergencyCTA() {
                 variant="outline" 
                 className="h-14 px-8 rounded-full bg-black/40 hover:bg-black/60 border-white/20 hover:border-primary/60 text-white backdrop-blur-md font-bold text-sm justify-center shadow-lg transition-all cursor-pointer"
               >
-                <a href="#estimate" className="flex items-center justify-center gap-2">
+                <Link to="/estimate" className="flex items-center justify-center gap-2">
                   <span>Schedule Free Estimate</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </Button>
 
             </div>

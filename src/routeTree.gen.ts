@@ -12,9 +12,18 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EstimateRouteImport } from './routes/estimate'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesBasementFinishingRouteImport } from './routes/services/basement-finishing'
+import { Route as ServicesBathroomRemodelingRouteImport } from './routes/services/bathroom-remodeling'
+import { Route as ServicesCustomMillworkRouteImport } from './routes/services/custom-millwork'
+import { Route as ServicesDrywallPaintingRouteImport } from './routes/services/drywall-painting'
+import { Route as ServicesFlooringRouteImport } from './routes/services/flooring'
+import { Route as ServicesFoundationRepairRouteImport } from './routes/services/foundation-repair'
+import { Route as ServicesKitchenRemodelingRouteImport } from './routes/services/kitchen-remodeling'
+import { Route as ServicesWholeHomeRenovationRouteImport } from './routes/services/whole-home-renovation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,6 +40,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EstimateRoute = EstimateRouteImport.update({
+  id: '/estimate',
+  path: '/estimate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -41,60 +55,179 @@ const ReviewsRoute = ReviewsRouteImport.update({
   path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesBasementFinishingRoute =
+  ServicesBasementFinishingRouteImport.update({
+    id: '/services/basement-finishing',
+    path: '/services/basement-finishing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesBathroomRemodelingRoute =
+  ServicesBathroomRemodelingRouteImport.update({
+    id: '/services/bathroom-remodeling',
+    path: '/services/bathroom-remodeling',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesCustomMillworkRoute = ServicesCustomMillworkRouteImport.update({
+  id: '/services/custom-millwork',
+  path: '/services/custom-millwork',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDrywallPaintingRoute = ServicesDrywallPaintingRouteImport.update({
+  id: '/services/drywall-painting',
+  path: '/services/drywall-painting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesFlooringRoute = ServicesFlooringRouteImport.update({
+  id: '/services/flooring',
+  path: '/services/flooring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesFoundationRepairRoute =
+  ServicesFoundationRepairRouteImport.update({
+    id: '/services/foundation-repair',
+    path: '/services/foundation-repair',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesKitchenRemodelingRoute =
+  ServicesKitchenRemodelingRouteImport.update({
+    id: '/services/kitchen-remodeling',
+    path: '/services/kitchen-remodeling',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesWholeHomeRenovationRoute =
+  ServicesWholeHomeRenovationRouteImport.update({
+    id: '/services/whole-home-renovation',
+    path: '/services/whole-home-renovation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/projects': typeof ProjectsRoute
   '/reviews': typeof ReviewsRoute
-  '/services': typeof ServicesRoute
+  '/services/basement-finishing': typeof ServicesBasementFinishingRoute
+  '/services/bathroom-remodeling': typeof ServicesBathroomRemodelingRoute
+  '/services/custom-millwork': typeof ServicesCustomMillworkRoute
+  '/services/drywall-painting': typeof ServicesDrywallPaintingRoute
+  '/services/flooring': typeof ServicesFlooringRoute
+  '/services/foundation-repair': typeof ServicesFoundationRepairRoute
+  '/services/kitchen-remodeling': typeof ServicesKitchenRemodelingRoute
+  '/services/whole-home-renovation': typeof ServicesWholeHomeRenovationRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/projects': typeof ProjectsRoute
   '/reviews': typeof ReviewsRoute
-  '/services': typeof ServicesRoute
+  '/services/basement-finishing': typeof ServicesBasementFinishingRoute
+  '/services/bathroom-remodeling': typeof ServicesBathroomRemodelingRoute
+  '/services/custom-millwork': typeof ServicesCustomMillworkRoute
+  '/services/drywall-painting': typeof ServicesDrywallPaintingRoute
+  '/services/flooring': typeof ServicesFlooringRoute
+  '/services/foundation-repair': typeof ServicesFoundationRepairRoute
+  '/services/kitchen-remodeling': typeof ServicesKitchenRemodelingRoute
+  '/services/whole-home-renovation': typeof ServicesWholeHomeRenovationRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/projects': typeof ProjectsRoute
   '/reviews': typeof ReviewsRoute
-  '/services': typeof ServicesRoute
+  '/services/basement-finishing': typeof ServicesBasementFinishingRoute
+  '/services/bathroom-remodeling': typeof ServicesBathroomRemodelingRoute
+  '/services/custom-millwork': typeof ServicesCustomMillworkRoute
+  '/services/drywall-painting': typeof ServicesDrywallPaintingRoute
+  '/services/flooring': typeof ServicesFlooringRoute
+  '/services/foundation-repair': typeof ServicesFoundationRepairRoute
+  '/services/kitchen-remodeling': typeof ServicesKitchenRemodelingRoute
+  '/services/whole-home-renovation': typeof ServicesWholeHomeRenovationRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/projects' | '/reviews' | '/services'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/estimate'
+    | '/projects'
+    | '/reviews'
+    | '/services/basement-finishing'
+    | '/services/bathroom-remodeling'
+    | '/services/custom-millwork'
+    | '/services/drywall-painting'
+    | '/services/flooring'
+    | '/services/foundation-repair'
+    | '/services/kitchen-remodeling'
+    | '/services/whole-home-renovation'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/projects' | '/reviews' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/estimate'
+    | '/projects'
+    | '/reviews'
+    | '/services/basement-finishing'
+    | '/services/bathroom-remodeling'
+    | '/services/custom-millwork'
+    | '/services/drywall-painting'
+    | '/services/flooring'
+    | '/services/foundation-repair'
+    | '/services/kitchen-remodeling'
+    | '/services/whole-home-renovation'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/estimate'
     | '/projects'
     | '/reviews'
-    | '/services'
+    | '/services/basement-finishing'
+    | '/services/bathroom-remodeling'
+    | '/services/custom-millwork'
+    | '/services/drywall-painting'
+    | '/services/flooring'
+    | '/services/foundation-repair'
+    | '/services/kitchen-remodeling'
+    | '/services/whole-home-renovation'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  EstimateRoute: typeof EstimateRoute
   ProjectsRoute: typeof ProjectsRoute
   ReviewsRoute: typeof ReviewsRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesBasementFinishingRoute: typeof ServicesBasementFinishingRoute
+  ServicesBathroomRemodelingRoute: typeof ServicesBathroomRemodelingRoute
+  ServicesCustomMillworkRoute: typeof ServicesCustomMillworkRoute
+  ServicesDrywallPaintingRoute: typeof ServicesDrywallPaintingRoute
+  ServicesFlooringRoute: typeof ServicesFlooringRoute
+  ServicesFoundationRepairRoute: typeof ServicesFoundationRepairRoute
+  ServicesKitchenRemodelingRoute: typeof ServicesKitchenRemodelingRoute
+  ServicesWholeHomeRenovationRoute: typeof ServicesWholeHomeRenovationRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -120,6 +253,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/estimate': {
+      id: '/estimate'
+      path: '/estimate'
+      fullPath: '/estimate'
+      preLoaderRoute: typeof EstimateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -134,11 +274,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
+    '/services/': {
+      id: '/services/'
       path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/basement-finishing': {
+      id: '/services/basement-finishing'
+      path: '/services/basement-finishing'
+      fullPath: '/services/basement-finishing'
+      preLoaderRoute: typeof ServicesBasementFinishingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/bathroom-remodeling': {
+      id: '/services/bathroom-remodeling'
+      path: '/services/bathroom-remodeling'
+      fullPath: '/services/bathroom-remodeling'
+      preLoaderRoute: typeof ServicesBathroomRemodelingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/custom-millwork': {
+      id: '/services/custom-millwork'
+      path: '/services/custom-millwork'
+      fullPath: '/services/custom-millwork'
+      preLoaderRoute: typeof ServicesCustomMillworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/drywall-painting': {
+      id: '/services/drywall-painting'
+      path: '/services/drywall-painting'
+      fullPath: '/services/drywall-painting'
+      preLoaderRoute: typeof ServicesDrywallPaintingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/flooring': {
+      id: '/services/flooring'
+      path: '/services/flooring'
+      fullPath: '/services/flooring'
+      preLoaderRoute: typeof ServicesFlooringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/foundation-repair': {
+      id: '/services/foundation-repair'
+      path: '/services/foundation-repair'
+      fullPath: '/services/foundation-repair'
+      preLoaderRoute: typeof ServicesFoundationRepairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/kitchen-remodeling': {
+      id: '/services/kitchen-remodeling'
+      path: '/services/kitchen-remodeling'
+      fullPath: '/services/kitchen-remodeling'
+      preLoaderRoute: typeof ServicesKitchenRemodelingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/whole-home-renovation': {
+      id: '/services/whole-home-renovation'
+      path: '/services/whole-home-renovation'
+      fullPath: '/services/whole-home-renovation'
+      preLoaderRoute: typeof ServicesWholeHomeRenovationRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -148,9 +344,18 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  EstimateRoute: EstimateRoute,
   ProjectsRoute: ProjectsRoute,
   ReviewsRoute: ReviewsRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesBasementFinishingRoute: ServicesBasementFinishingRoute,
+  ServicesBathroomRemodelingRoute: ServicesBathroomRemodelingRoute,
+  ServicesCustomMillworkRoute: ServicesCustomMillworkRoute,
+  ServicesDrywallPaintingRoute: ServicesDrywallPaintingRoute,
+  ServicesFlooringRoute: ServicesFlooringRoute,
+  ServicesFoundationRepairRoute: ServicesFoundationRepairRoute,
+  ServicesKitchenRemodelingRoute: ServicesKitchenRemodelingRoute,
+  ServicesWholeHomeRenovationRoute: ServicesWholeHomeRenovationRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

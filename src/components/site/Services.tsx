@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -37,7 +38,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Bespoke chef's kitchens engineered for culinary passion and entertaining, featuring custom solid wood cabinetry, waterfall quartz islands, and integrated panel-ready appliances.",
     features: ["Custom Solid Wood Cabinetry", "Waterfall Quartz & Marble Islands", "Integrated Panel Appliances"],
     image: images.kitchen,
-    to: "/services",
+    to: "/services/kitchen-remodeling",
   },
   {
     id: "bathroom",
@@ -48,7 +49,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Turn your daily routine into a five-star spa escape with curbless walk-in steam showers, freestanding soaking tubs, radiant heated tile floors, and custom floating vanities.",
     features: ["Curbless Steam Shower Enclosures", "Radiant Heated Tile Flooring", "Designer Fixtures & Floating Vanities"],
     image: images.bathroom,
-    to: "/services",
+    to: "/services/bathroom-remodeling",
   },
   {
     id: "structural",
@@ -59,7 +60,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Protect your property's foundational integrity with engineered steel piering, helical piles, foundation leveling, carbon-fiber crack reinforcement, and load-bearing beam removal.",
     features: ["Engineered Steel Piering & Piles", "Load-Bearing Wall Removal", "Certified Lifetime Structural Warranty"],
     image: images.foundation,
-    to: "/services",
+    to: "/services/foundation-repair",
   },
   {
     id: "flooring",
@@ -70,7 +71,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Flawless installation of wide-plank French oak, intricate herringbone patterns, large-format porcelain tile, and durable luxury vinyl plank with acoustical underlayment.",
     features: ["Wide-Plank French White Oak", "Custom Herringbone Patterns", "Precision Subfloor Leveling"],
     image: images.flooring,
-    to: "/services",
+    to: "/services/flooring",
   },
   {
     id: "whole-home",
@@ -81,7 +82,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Reimagine every square foot. We orchestrate comprehensive whole-home renovations, removing walls to create seamless open-concept living spaces filled with natural light.",
     features: ["Open-Concept Space Reconfiguration", "Full MEP Modernization & Code", "Full Architectural & City Permitting"],
     image: images.architectural,
-    to: "/services",
+    to: "/services/whole-home-renovation",
   },
   {
     id: "basement",
@@ -92,7 +93,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Transform unused subterranean square footage into luxurious in-law suites, state-of-the-art home theaters, climate-controlled wine cellars, and wet bars.",
     features: ["Sub-Floor Hydro-Thermal Barrier", "Climate-Controlled Wine Cellars", "Egress Windows & Custom Wet Bars"],
     image: images.basement,
-    to: "/services",
+    to: "/services/basement-finishing",
   },
   {
     id: "millwork",
@@ -103,7 +104,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Handcrafted interior millwork including coffered ceilings, fireplace surrounds, floating bookcases, wainscoting, and hidden door entries built by master carpenters.",
     features: ["Coffered & Architectural Ceilings", "Floor-to-Ceiling Library Suites", "Hidden Flush Doors & Paneling"],
     image: images.millwork,
-    to: "/services",
+    to: "/services/custom-millwork",
   },
   {
     id: "painting",
@@ -114,7 +115,7 @@ export const servicesData: ServiceItem[] = [
     desc: "Level 5 smooth drywall finish, laser-straight edge work, and zero-VOC designer paint applications using premium Benjamin Moore and Sherwin-Williams formulations.",
     features: ["Level 5 Smooth Drywall Standard", "Commercial Dust Air Filtration", "Zero-VOC Eco-Friendly Formulations"],
     image: images.painting,
-    to: "/services",
+    to: "/services/drywall-painting",
   },
 ];
 
@@ -198,7 +199,7 @@ export function Services() {
                 className="group relative rounded-[26px] overflow-hidden bg-card/90 dark:bg-card/60 border border-border/40 hover:border-primary/60 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-12px_rgba(163,126,58,0.22)] dark:hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.8)] flex flex-col justify-between select-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-primary/50 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-500 before:z-20"
               >
                 {/* Background Image Container with Vignette */}
-                <div className="relative h-56 w-full overflow-hidden">
+                <Link to={item.to} className="block relative h-56 w-full overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -223,13 +224,15 @@ export function Services() {
                     <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
                     <span>In-House Master Trades</span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card Content */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="font-display text-[17px] font-bold text-foreground leading-snug group-hover:text-primary transition-colors min-h-[44px] flex items-center">
-                      {item.title}
+                      <Link to={item.to} className="hover:text-primary transition-colors">
+                        {item.title}
+                      </Link>
                     </h3>
                     <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-3 min-h-[50px]">
                       {item.desc}
@@ -253,13 +256,13 @@ export function Services() {
                     <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wider">
                       Turnkey Scope
                     </span>
-                    <a
-                      href="#estimate"
+                    <Link
+                      to={item.to}
                       className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:text-primary/80 transition-colors group/link cursor-pointer"
                     >
-                      <span>Inquire Now</span>
+                      <span>Explore Discipline</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -294,9 +297,9 @@ export function Services() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full lg:w-auto">
             <Button asChild size="lg" className="bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-11 px-7 rounded-full font-bold text-xs justify-center w-full sm:w-auto">
-              <a href="#estimate">
+              <Link to="/estimate">
                 Request On-Site Inspection <ArrowRight className="ml-2 w-3.5 h-3.5" />
-              </a>
+              </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-11 px-6 rounded-full border-border/60 hover:bg-muted text-foreground font-bold text-xs justify-center w-full sm:w-auto">
               <a href="tel:8164623599">

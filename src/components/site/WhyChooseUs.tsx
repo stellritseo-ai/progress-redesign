@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { 
   ArrowRight,
   Award, 
@@ -157,13 +158,13 @@ export function WhyChooseUs() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="#services"
+              <Link
+                to="/services"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground btn-glow hover:bg-primary/90 text-xs sm:text-[12.5px] font-bold tracking-normal h-11 px-7 rounded-full transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 Explore Services
                 <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </Link>
               <a
                 href="tel:8164623599"
                 className="inline-flex items-center gap-2 bg-card/85 dark:bg-card/70 border border-border/60 hover:border-primary/40 hover:bg-muted text-foreground text-xs sm:text-[12.5px] font-bold tracking-normal h-11 px-6 rounded-full transition-all duration-300 shadow-sm hover:scale-[1.02] active:scale-[0.98] cursor-pointer"

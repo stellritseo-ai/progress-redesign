@@ -1,2 +1,33 @@
-import { createFileRoute } from "@tanstack/react-router"; import { InteriorPage } from "@/components/interior-page";
-export const Route=createFileRoute("/about")({head:()=>({meta:[{title:"About | Progress Interior Designs"},{name:"description",content:"Meet the family-owned renovation specialists behind Progress Interior Designs, serving clients since 2014."},{property:"og:title",content:"About Progress Interior Designs"},{property:"og:description",content:"Family-owned craftsmanship and trusted renovation service since 2014."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:"/about"}]}),component:()=> <InteriorPage kind="about"/>});
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { AboutDedicated } from "@/components/site/AboutDedicated";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { 
+        title: "About Us | Progress Interior Designs - Architectural Elegance & Uncompromising Precision" 
+      },
+      {
+        name: "description",
+        content: "For over a decade, Progress Interior Designs has been the premier choice for discerning homeowners seeking to transform their living spaces through expert craftsmanship, transparent pricing, and architectural integrity."
+      },
+      { 
+        property: "og:title", 
+        content: "About Progress Interior Designs | Architectural Elegance & Precision" 
+      },
+      { 
+        property: "og:description", 
+        content: "For over a decade, Progress Interior Designs has been the premier choice for discerning homeowners seeking expert craftsmanship, transparent pricing, and architectural integrity." 
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "/about" }]
+  }),
+  component: () => (
+    <SiteLayout overlay={false}>
+      <AboutDedicated />
+    </SiteLayout>
+  )
+});

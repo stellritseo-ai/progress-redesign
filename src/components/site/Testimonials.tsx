@@ -1,4 +1,5 @@
-import { BadgeCheck, MessageSquare, Quote, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, BadgeCheck, MessageSquare, Quote, ShieldCheck, Sparkles, Star } from "lucide-react";
 
 export interface Review {
   name: string;
@@ -263,6 +264,15 @@ export function Testimonials() {
               <div className="flex items-center gap-1.5 text-[10.5px] sm:text-[11px] font-bold text-primary pt-0.5">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>100% Client Recommended</span>
+              </div>
+              <div className="pt-1.5">
+                <Link 
+                  to="/reviews"
+                  className="inline-flex items-center gap-1.5 text-[11.5px] font-bold text-primary hover:text-primary/80 transition-colors group cursor-pointer"
+                >
+                  <span>Read All Verified Reviews</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </div>

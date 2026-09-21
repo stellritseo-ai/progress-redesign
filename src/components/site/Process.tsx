@@ -1,4 +1,5 @@
 
+import { Link } from "@tanstack/react-router";
 import { 
   ArrowRight,
   CalendarCheck,
@@ -165,9 +166,9 @@ export function Process() {
 
           <div className="shrink-0 w-full lg:w-auto flex justify-center lg:justify-end">
             <Button asChild className="bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-11 px-7 rounded-full font-bold text-xs w-full sm:w-auto justify-center">
-              <a href="#estimate">
+              <Link to="/contact">
                 Begin Phase 1 Discovery <ArrowRight className="ml-2 w-3.5 h-3.5" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "@tanstack/react-router";
 import { 
   ArrowRight, 
   Camera, 
@@ -193,9 +194,14 @@ export function Gallery() {
         {/* Action Buttons */}
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto">
           <Button asChild size="lg" className="bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-12 px-8 rounded-full font-bold text-xs sm:text-sm shadow-md justify-center w-full sm:w-auto">
-            <a href="#estimate">
+            <Link to="/contact">
               Schedule Design Walkthrough <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="h-12 px-7 rounded-full border-border/70 hover:bg-muted text-foreground font-bold text-xs sm:text-sm shadow-sm justify-center w-full sm:w-auto">
+            <Link to="/projects">
+              View All Projects <ArrowRight className="ml-2 w-4 h-4 text-primary" />
+            </Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="h-12 px-7 rounded-full border-border/70 hover:bg-muted text-foreground font-bold text-xs sm:text-sm shadow-sm justify-center w-full sm:w-auto">
             <a href="tel:8164623599">

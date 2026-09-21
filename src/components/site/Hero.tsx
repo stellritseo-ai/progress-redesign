@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Award, BadgeCheck, Building2, CheckCircle2, Phone, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/heroprogress.mp4";
@@ -29,7 +30,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 xs:px-5 sm:px-8 lg:px-10 w-full py-6 sm:py-10 lg:py-12">
-        <div className="max-w-xl sm:max-w-2xl md:max-w-3xl flex flex-col items-start text-left animate-fade-up">
+        <div className="max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl flex flex-col items-start text-left animate-fade-up">
 
           {/* Trust Eyebrow Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 sm:px-3.5 py-1.5 text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
@@ -46,7 +47,7 @@ export function Hero() {
           {/* Headline */}
           <h1 className="font-display font-extrabold leading-[1.08] tracking-tight text-foreground text-[30px] xs:text-[36px] sm:text-[46px] md:text-[54px] lg:text-[62px] mt-3.5 sm:mt-5">
             Architectural Elegance.<br />
-            <span className="gradient-text-gold">Uncompromising Precision.</span>
+            <span className="gradient-text-gold inline-block sm:whitespace-nowrap">Uncompromising Precision.</span>
           </h1>
 
           {/* Subtext */}
@@ -55,11 +56,11 @@ export function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="mt-5 sm:mt-7 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 w-full xs:w-auto">
+          <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 btn-glow border border-primary/40 h-11 sm:h-12 px-5 sm:px-6 rounded-full font-bold text-xs sm:text-[13px] tracking-normal justify-center shadow-lg">
-              <a href="#estimate" className="flex items-center justify-center">
+              <Link to="/estimate" className="flex items-center justify-center">
                 <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" /> Request Free 3D Estimate <ArrowRight className="ml-1.5 w-3.5 h-3.5 shrink-0" />
-              </a>
+              </Link>
             </Button>
             <Button asChild variant="outline" className="h-11 sm:h-12 px-5 sm:px-6 rounded-full border-border/70 hover:bg-muted text-foreground font-bold text-xs sm:text-[13px] tracking-normal justify-center bg-background/60 backdrop-blur-md">
               <a href="tel:8164623599" className="flex items-center justify-center gap-2">
@@ -73,22 +74,22 @@ export function Hero() {
         <div className="mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-border/25 w-full overflow-x-auto no-scrollbar">
           <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 sm:gap-2.5 min-w-max sm:min-w-0">
             {[
-              { icon: ShieldCheck, label: "Commitment to Safety" },
-              { icon: BadgeCheck, label: "High Quality Workmanship" },
-              { icon: Sparkles, label: "5-Year Craftsmanship Warranty" },
-              { icon: CheckCircle2, label: "Free Estimates & Transparent Pricing" },
-              { icon: ShieldCheck, label: "Dust-Controlled Clean Sites" },
-            ].map(({ icon: Icon, label }) => (
-              <a
+              { icon: ShieldCheck, label: "Commitment to Safety", to: "/about" },
+              { icon: BadgeCheck, label: "High Quality Workmanship", to: "/services" },
+              { icon: Sparkles, label: "5-Year Craftsmanship Warranty", to: "/about" },
+              { icon: CheckCircle2, label: "Free Estimates & Transparent Pricing", to: "/estimate" },
+              { icon: ShieldCheck, label: "Dust-Controlled Clean Sites", to: "/about" },
+            ].map(({ icon: Icon, label, to }) => (
+              <Link
                 key={label}
-                href="#why-choose-us"
+                to={to}
                 className="group shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary/25 bg-background/85 hover:bg-card hover:border-primary/60 px-3 sm:px-3.5 py-1.5 text-[10px] sm:text-[11.5px] font-semibold text-foreground/85 hover:text-foreground backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 dark:bg-card/50 dark:hover:bg-card/85 dark:border-primary/30 dark:text-foreground"
               >
                 <span className="flex h-4 w-4 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
                   <Icon className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 </span>
                 <span className="whitespace-nowrap">{label}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { 
   Accordion, 
   AccordionContent, 
@@ -129,9 +130,9 @@ export function FAQ() {
               
               <div className="mt-5 space-y-3">
                 <Button asChild className="w-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-11 rounded-full font-bold text-xs uppercase tracking-wider shadow-md">
-                  <a href="#estimate">
+                  <Link to="/contact">
                     Schedule Design Consultation <ArrowRight className="ml-2 w-3.5 h-3.5" />
-                  </a>
+                  </Link>
                 </Button>
                 
                 <a 

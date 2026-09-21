@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Layers, ShieldCheck, Sparkles, UserCheck, Wind } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/images";
@@ -133,12 +134,12 @@ export function Welcome() {
           {/* Dual CTAs matching hero style */}
           <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
             <Button asChild className="bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-11 px-7 rounded-full font-bold text-xs sm:text-[13px] tracking-normal justify-center w-full sm:w-auto">
-              <a href="#why-choose-us">
+              <Link to="/about">
                 Read Our Story <ArrowRight className="ml-2 w-3.5 h-3.5" />
-              </a>
+              </Link>
             </Button>
             <Button asChild variant="outline" className="h-11 px-6 rounded-full border-border/60 hover:bg-muted text-foreground font-bold text-xs sm:text-[13px] tracking-normal justify-center w-full sm:w-auto">
-              <a href="#estimate">Schedule Consultation</a>
+              <Link to="/contact">Schedule Consultation</Link>
             </Button>
           </div>
 

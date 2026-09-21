@@ -1,22 +1,22 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { 
-  ArrowRight, 
-  ArrowUp, 
-  ChevronDown, 
-  Clock, 
-  Hammer, 
-  Home, 
-  Instagram, 
-  Mail, 
-  MapPin, 
-  Menu, 
-  Paintbrush, 
-  Phone, 
-  Ruler, 
-  ShieldCheck, 
-  Sparkles, 
-  Star, 
-  Wrench, 
+import {
+  ArrowRight,
+  ArrowUp,
+  ChevronDown,
+  Clock,
+  Hammer,
+  Home,
+  Instagram,
+  Mail,
+  MapPin,
+  Menu,
+  Paintbrush,
+  Phone,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Wrench,
   X,
   Facebook,
   Linkedin
@@ -27,42 +27,42 @@ import logoImg from "@/assets/logo.png";
 
 export const serviceLinks = [
   {
-    to: "/services",
+    to: "/services/kitchen-remodeling",
     title: "Kitchen Remodeling & Custom Cabinetry",
     desc: "Chef-grade islands, quartz surfaces, and bespoke cabinetry.",
     icon: Sparkles,
     tag: "Most Popular",
   },
   {
-    to: "/services",
+    to: "/services/bathroom-remodeling",
     title: "Luxury Bathroom & Spa Retreats",
     desc: "Walk-in curbless showers, freestanding soaking tubs & heated tile.",
     icon: Home,
     tag: "Master Suite",
   },
   {
-    to: "/services",
+    to: "/services/whole-home-renovation",
     title: "Whole-Home Architectural Renovations",
     desc: "Complete open-concept reconfigurations and interior expansions.",
     icon: Ruler,
     tag: "Turnkey",
   },
   {
-    to: "/services",
+    to: "/services/foundation-repair",
     title: "Foundation Repair & Structural Engineering",
     desc: "Piering, crack injection, leveling & load-bearing beam modifications.",
     icon: Hammer,
     tag: "Structural",
   },
   {
-    to: "/services",
+    to: "/services/flooring",
     title: "Hardwood, Stone & Designer Flooring",
     desc: "Handcrafted white oak, herringbone patterns, and precision stone tile.",
     icon: Wrench,
     tag: "Premium",
   },
   {
-    to: "/services",
+    to: "/services/basement-finishing",
     title: "Basement Finishing & Entertainment Suites",
     desc: "Subterranean living, home theaters, custom bars & wine cellars.",
     icon: Paintbrush,
@@ -70,11 +70,11 @@ export const serviceLinks = [
   },
 ];
 
-export function Logo({ 
+export function Logo({
   className = "",
   size = "default",
   inverse = false,
-}: { 
+}: {
   className?: string;
   size?: "default" | "sm" | "lg";
   inverse?: boolean;
@@ -82,47 +82,21 @@ export function Logo({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isHome = pathname === "/";
 
-  if (isHome) {
-    return (
-      <a 
-        href="#" 
-        className={`inline-flex items-center transition-all duration-200 hover:opacity-90 active:scale-[0.99] shrink-0 cursor-pointer ${className}`} 
-        aria-label="Progress Interior Designs Home"
-      >
-        <img
-          src={logoImg}
-          alt="Progress Interior Designs"
-          className={`w-auto object-contain transition-all duration-200 drop-shadow-sm dark:brightness-110 ${
-            size === "sm" 
-              ? "h-9 xs:h-10 sm:h-11" 
-              : size === "lg" 
-              ? "h-14 xs:h-16 sm:h-20" 
-              : "h-[44px] xs:h-[50px] sm:h-[58px] lg:h-[68px]"
-          }`}
-          onError={(e) => {
-            e.currentTarget.src = "/logo.png";
-          }}
-        />
-      </a>
-    );
-  }
-
   return (
-    <Link 
-      to="/" 
-      className={`inline-flex items-center transition-all duration-200 hover:opacity-90 active:scale-[0.99] shrink-0 ${className}`} 
+    <Link
+      to="/"
+      className={`inline-flex items-center transition-all duration-200 hover:opacity-90 active:scale-[0.99] shrink-0 ${className}`}
       aria-label="Progress Interior Designs Home"
     >
       <img
         src={logoImg}
         alt="Progress Interior Designs"
-        className={`w-auto object-contain transition-all duration-200 drop-shadow-sm dark:brightness-110 ${
-          size === "sm" 
-            ? "h-9 xs:h-10 sm:h-11" 
-            : size === "lg" 
-            ? "h-14 xs:h-16 sm:h-20" 
-            : "h-[44px] xs:h-[50px] sm:h-[58px] lg:h-[68px]"
-        }`}
+        className={`w-auto object-contain transition-all duration-200 drop-shadow-sm dark:brightness-110 ${size === "sm"
+            ? "h-9 xs:h-10 sm:h-11"
+            : size === "lg"
+              ? "h-14 xs:h-16 sm:h-20"
+              : "h-[44px] xs:h-[50px] sm:h-[58px] lg:h-[68px]"
+          }`}
         onError={(e) => {
           e.currentTarget.src = "/logo.png";
         }}
@@ -214,15 +188,14 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         </div>
 
         {/* Main Navbar (Locked height so header does not increase) */}
-        <nav 
-          aria-label="Main Navigation" 
-          className={`border-b transition-all duration-300 flex items-center h-20 ${
-            scrolled 
-              ? "glass-nav shadow-2xl" 
-              : overlay 
-                ? "bg-background/80 backdrop-blur-md border-border/20" 
+        <nav
+          aria-label="Main Navigation"
+          className={`border-b transition-all duration-300 flex items-center h-20 ${scrolled
+              ? "glass-nav shadow-2xl"
+              : overlay
+                ? "bg-background/80 backdrop-blur-md border-border/20"
                 : "bg-background/95 backdrop-blur-md border-border/30"
-          }`}
+            }`}
         >
           <div className="mx-auto max-w-[1440px] w-full px-5 lg:px-8 flex items-center justify-between">
             <Logo />
@@ -231,19 +204,19 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             <div className="hidden lg:flex items-center gap-7 xl:gap-8 ml-auto mr-7 xl:mr-10">
               {isHome ? (
                 <>
-                  <a 
-                    href="#" 
+                  <Link
+                    to="/"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors cursor-pointer"
                   >
                     Home
-                  </a>
+                  </Link>
 
-                  <a 
-                    href="#about" 
-                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  <Link
+                    to="/about"
+                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                   >
                     About Us
-                  </a>
+                  </Link>
 
                   {/* Services Mega Dropdown */}
                   <div 
@@ -251,13 +224,13 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                     onMouseEnter={() => setServicesMenuOpen(true)}
                     onMouseLeave={() => setServicesMenuOpen(false)}
                   >
-                    <a
-                      href="#services"
+                    <Link
+                      to="/services"
                       className="flex items-center gap-1 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors py-2 cursor-pointer"
                     >
                       <span>Services</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesMenuOpen ? "rotate-180 text-primary" : ""}`} />
-                    </a>
+                    </Link>
 
                     {/* Dropdown Menu Box */}
                     {servicesMenuOpen && (
@@ -268,17 +241,17 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                               <p className="text-xs font-bold uppercase tracking-widest text-primary">Our Core Disciplines</p>
                               <p className="text-[11px] text-muted-foreground">Architectural design, structural execution & master finish work</p>
                             </div>
-                            <a href="#services" onClick={() => setServicesMenuOpen(false)} className="text-[11px] font-bold text-primary hover:underline inline-flex items-center gap-1 cursor-pointer">
+                            <Link to="/services" onClick={() => setServicesMenuOpen(false)} className="text-[11px] font-bold text-primary hover:underline inline-flex items-center gap-1 cursor-pointer">
                               View All <ArrowRight className="w-3 h-3" />
-                            </a>
+                            </Link>
                           </div>
 
                           {serviceLinks.map((item) => {
                             const Icon = item.icon;
                             return (
-                              <a 
+                              <Link 
                                 key={item.title} 
-                                href="#services"
+                                to={item.to}
                                 onClick={() => setServicesMenuOpen(false)}
                                 className="group flex items-start gap-3.5 p-3 rounded-xl hover:bg-muted/70 border border-transparent hover:border-primary/20 transition-all cursor-pointer"
                               >
@@ -295,7 +268,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                                     {item.desc}
                                   </p>
                                 </div>
-                              </a>
+                              </Link>
                             );
                           })}
                         </div>
@@ -303,31 +276,31 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                     )}
                   </div>
 
-                  <a 
-                    href="#portfolio" 
+                  <Link
+                    to="/projects"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     Portfolio
-                  </a>
+                  </Link>
 
-                  <a 
-                    href="#reviews" 
-                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  <Link
+                    to="/reviews"
+                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                   >
                     Reviews
-                  </a>
+                  </Link>
 
-                  <a 
-                    href="#estimate" 
-                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  <Link
+                    to="/contact"
+                    className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                   >
                     Contact
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
-                  <Link 
-                    to="/" 
+                  <Link
+                    to="/"
                     activeOptions={{ exact: true }}
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                     activeProps={{ className: "text-primary font-extrabold" }}
@@ -335,8 +308,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                     Home
                   </Link>
 
-                  <Link 
-                    to="/about" 
+                  <Link
+                    to="/about"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                     activeProps={{ className: "text-primary font-extrabold" }}
                   >
@@ -344,7 +317,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                   </Link>
 
                   {/* Services Mega Dropdown */}
-                  <div 
+                  <div
                     className="relative"
                     onMouseEnter={() => setServicesMenuOpen(true)}
                     onMouseLeave={() => setServicesMenuOpen(false)}
@@ -375,8 +348,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                           {serviceLinks.map((item) => {
                             const Icon = item.icon;
                             return (
-                              <Link 
-                                key={item.title} 
+                              <Link
+                                key={item.title}
                                 to={item.to}
                                 className="group flex items-start gap-3.5 p-3 rounded-xl hover:bg-muted/70 border border-transparent hover:border-primary/20 transition-all"
                               >
@@ -401,24 +374,24 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                     )}
                   </div>
 
-                  <Link 
-                    to="/projects" 
+                  <Link
+                    to="/projects"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                     activeProps={{ className: "text-primary font-extrabold" }}
                   >
                     Portfolio
                   </Link>
 
-                  <Link 
-                    to="/reviews" 
+                  <Link
+                    to="/reviews"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                     activeProps={{ className: "text-primary font-extrabold" }}
                   >
                     Reviews
                   </Link>
 
-                  <Link 
-                    to="/contact" 
+                  <Link
+                    to="/contact"
                     className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-colors"
                     activeProps={{ className: "text-primary font-extrabold" }}
                   >
@@ -430,8 +403,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
             {/* Right Action Controls */}
             <div className="flex items-center gap-3 sm:gap-4">
-              <a 
-                href="tel:8164623599" 
+              <a
+                href="tel:8164623599"
                 className="hidden xl:flex items-center gap-2 text-xs font-bold text-foreground hover:text-primary transition-colors bg-secondary/60 hover:bg-secondary px-3.5 py-2 rounded-full border border-border/40 hover:border-primary/40"
               >
                 <Phone className="w-3.5 h-3.5 text-primary animate-pulse" />
@@ -439,18 +412,14 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               </a>
 
               <Button asChild className="hidden sm:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 btn-glow border border-primary/40 font-bold px-6 h-10 rounded-full cursor-pointer">
-                {isHome ? (
-                  <a href="#estimate">Get Free Estimate</a>
-                ) : (
-                  <Link to="/contact">Get Free Estimate</Link>
-                )}
+                <Link to="/estimate">Get Free Estimate</Link>
               </Button>
 
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="lg:hidden text-foreground hover:bg-muted border border-border/30 rounded-xl" 
-                aria-label="Open menu" 
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden text-foreground hover:bg-muted border border-border/30 rounded-xl"
+                aria-label="Open menu"
                 onClick={() => {
                   setOpen(true);
                   setMobileServicesOpen(true);
@@ -464,21 +433,20 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       </header>
 
       {/* Mobile Drawer (High Polish) */}
-      <div 
-        className={`fixed inset-0 z-[100] bg-background text-foreground transition-all duration-300 lg:hidden ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+      <div
+        className={`fixed inset-0 z-[100] bg-background text-foreground transition-all duration-300 lg:hidden ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
       >
         <div className="absolute top-1/4 left-1/4 w-[320px] h-[320px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 flex items-center justify-between border-b border-border/30 px-4 xs:px-6 py-3.5 bg-background/95 backdrop-blur-md">
           <Logo />
           <div className="flex items-center gap-2">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              aria-label="Close menu" 
-              onClick={() => setOpen(false)} 
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
               className="hover:bg-muted rounded-xl h-10 w-10 border border-border/40"
             >
               <X className="w-5 h-5 text-foreground" />
@@ -489,60 +457,32 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         <div className="relative z-10 h-[calc(100dvh-64px)] overflow-y-auto px-4 xs:px-6 py-6 flex flex-col justify-between overscroll-contain">
           <div className="space-y-4">
             <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Navigation</p>
-            
+
             {/* 01 Home */}
-            {isHome ? (
-              <a 
-                href="#" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">01</span>
-                  Home
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </a>
-            ) : (
-              <Link 
-                to="/" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">01</span>
-                  Home
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </Link>
-            )}
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-primary/70">01</span>
+                Home
+              </span>
+              <ArrowRight className="w-4 h-4 text-primary/50" />
+            </Link>
 
             {/* 02 About Us */}
-            {isHome ? (
-              <a 
-                href="#about" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">02</span>
-                  About Us
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </a>
-            ) : (
-              <Link 
-                to="/about" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">02</span>
-                  About Us
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </Link>
-            )}
+            <Link
+              to="/about"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-primary/70">02</span>
+                About Us
+              </span>
+              <ArrowRight className="w-4 h-4 text-primary/50" />
+            </Link>
 
             {/* 03 Services (Expandable Sub Menu) */}
             <div className="border-b border-border/20">
@@ -571,61 +511,23 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               {mobileServicesOpen && (
                 <div className="pb-4 pt-1 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
                   {/* Master View All Link */}
-                  {isHome ? (
-                    <a
-                      href="#services"
-                      onClick={() => setOpen(false)}
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold text-xs hover:bg-primary/20 transition-all cursor-pointer"
-                    >
-                      <span className="flex items-center gap-2">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>Explore All Renovation Disciplines</span>
-                      </span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                  ) : (
-                    <Link
-                      to="/services"
-                      onClick={() => setOpen(false)}
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold text-xs hover:bg-primary/20 transition-all"
-                    >
-                      <span className="flex items-center gap-2">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>Explore All Renovation Disciplines</span>
-                      </span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  )}
+                  <Link
+                    to="/services"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold text-xs hover:bg-primary/20 transition-all"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>Explore All Renovation Disciplines</span>
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
 
                   {/* 6 Core Disciplines */}
                   <div className="grid grid-cols-1 gap-1.5 pt-1">
                     {serviceLinks.map((item) => {
                       const Icon = item.icon;
-                      return isHome ? (
-                        <a
-                          key={item.title}
-                          href="#services"
-                          onClick={() => setOpen(false)}
-                          className="group flex items-start gap-3 p-2.5 rounded-xl bg-muted/40 hover:bg-muted/80 border border-border/30 hover:border-primary/30 transition-all cursor-pointer text-left"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/25 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0 mt-0.5">
-                            <Icon className="w-3.5 h-3.5" />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center justify-between gap-1.5">
-                              <p className="text-xs font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
-                                {item.title}
-                              </p>
-                              <span className="text-[9px] font-semibold text-primary/80 px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 shrink-0">
-                                {item.tag}
-                              </span>
-                            </div>
-                            <p className="text-[10px] text-muted-foreground line-clamp-1 mt-1 leading-normal">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </a>
-                      ) : (
+                      return (
                         <Link
                           key={item.title}
                           to={item.to}
@@ -657,85 +559,43 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             </div>
 
             {/* 04 Portfolio Projects */}
-            {isHome ? (
-              <a 
-                href="#portfolio" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">04</span>
-                  Portfolio Projects
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </a>
-            ) : (
-              <Link 
-                to="/projects" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">04</span>
-                  Portfolio Projects
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </Link>
-            )}
+            <Link
+              to="/projects"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-primary/70">04</span>
+                Portfolio Projects
+              </span>
+              <ArrowRight className="w-4 h-4 text-primary/50" />
+            </Link>
 
             {/* 05 Client Reviews */}
-            {isHome ? (
-              <a 
-                href="#reviews" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">05</span>
-                  Client Reviews
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </a>
-            ) : (
-              <Link 
-                to="/reviews" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">05</span>
-                  Client Reviews
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </Link>
-            )}
+            <Link
+              to="/reviews"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-primary/70">05</span>
+                Client Reviews
+              </span>
+              <ArrowRight className="w-4 h-4 text-primary/50" />
+            </Link>
 
             {/* 06 Contact & Consultation */}
-            {isHome ? (
-              <a 
-                href="#estimate" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">06</span>
-                  Contact & Consultation
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </a>
-            ) : (
-              <Link 
-                to="/contact" 
-                onClick={() => setOpen(false)} 
-                className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-primary/70">06</span>
-                  Contact & Consultation
-                </span>
-                <ArrowRight className="w-4 h-4 text-primary/50" />
-              </Link>
-            )}
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-b border-border/20 py-3.5 font-display text-xl font-bold hover:text-primary transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-primary/70">06</span>
+                Contact & Consultation
+              </span>
+              <ArrowRight className="w-4 h-4 text-primary/50" />
+            </Link>
           </div>
 
           <div className="pt-8 space-y-4">
@@ -748,15 +608,9 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             </div>
 
             <Button asChild className="w-full bg-primary text-primary-foreground btn-glow h-12 rounded-xl text-sm font-bold cursor-pointer" size="lg">
-              {isHome ? (
-                <a href="#estimate" onClick={() => setOpen(false)}>
-                  Request a Free 3D Estimate →
-                </a>
-              ) : (
-                <Link to="/contact" onClick={() => setOpen(false)}>
-                  Request a Free 3D Estimate →
-                </Link>
-              )}
+              <Link to="/estimate" onClick={() => setOpen(false)}>
+                Request a Free 3D Estimate →
+              </Link>
             </Button>
           </div>
         </div>
@@ -779,7 +633,7 @@ export function Footer() {
     <footer className="relative bg-[#08090C] text-slate-300 pt-20 pb-12 overflow-hidden border-t border-white/10 selection:bg-primary selection:text-primary-foreground">
       {/* Luminous Top Gradient Accent Line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
+
       {/* Ambient Radial Lighting Blooms */}
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-primary/[0.08] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[160px] pointer-events-none" />
@@ -789,14 +643,14 @@ export function Footer() {
 
         {/* Four Column Directory Grid */}
         <div className="grid gap-12 sm:gap-14 border-b border-white/10 pb-16 lg:grid-cols-[1.6fr_1fr_1.2fr_1.4fr]">
-          
+
           {/* Col 1: Brand Anchor & Credentials */}
           <div className="space-y-6">
             <Logo size="default" className="brightness-110" />
             <p className="max-w-sm text-xs sm:text-[13px] leading-relaxed text-slate-400">
               Progress Interior Designs delivers master-grade residential transformations, architectural chef's kitchens, spa retreats, and foundation enhancements across Greater Kansas City with fixed-price integrity.
             </p>
-            
+
             {/* Contractor Trust Badge */}
             <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5 max-w-sm backdrop-blur-md">
               <div className="flex items-center gap-2 text-primary text-xs font-bold">
@@ -810,36 +664,36 @@ export function Footer() {
                 </div>
                 <div>
                   <span className="block font-semibold text-slate-200">Liability Coverage</span>
-                  <span className="text-slate-400 font-mono">$2,000,000 Verified</span>
+                  <span className="text-slate-400 font-mono">Fully Insured & Bonded</span>
                 </div>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-3 text-slate-400">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer" 
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer"
                 aria-label="Follow on Instagram"
               >
                 <Instagram className="w-4 h-4 transition-transform group-hover:scale-110" />
               </a>
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer" 
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer"
                 aria-label="Follow on Facebook"
               >
                 <Facebook className="w-4 h-4 transition-transform group-hover:scale-110" />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all shadow-sm group cursor-pointer"
                 aria-label="Connect on LinkedIn"
               >
                 <Linkedin className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -857,46 +711,25 @@ export function Footer() {
             </div>
             <ul className="space-y-3.5 text-xs sm:text-[13px] text-slate-400 font-medium">
               <li>
-                {isHome ? (
-                  <a href="#" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Home</a>
-                ) : (
-                  <Link to="/" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Home</Link>
-                )}
+                <Link to="/" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Home</Link>
               </li>
               <li>
-                {isHome ? (
-                  <a href="#about" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">About Our Craftsmen</a>
-                ) : (
-                  <Link to="/about" className="hover:text-primary hover:translate-x-1 transition-all inline-block">About Our Craftsmen</Link>
-                )}
+                <Link to="/about" className="hover:text-primary hover:translate-x-1 transition-all inline-block">About Us</Link>
               </li>
               <li>
-                {isHome ? (
-                  <a href="#services" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Renovation Services</a>
-                ) : (
-                  <Link to="/services" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Renovation Services</Link>
-                )}
+                <Link to="/services" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Renovation Services</Link>
               </li>
               <li>
-                {isHome ? (
-                  <a href="#portfolio" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Project Portfolio</a>
-                ) : (
-                  <Link to="/projects" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Project Portfolio</Link>
-                )}
+                <Link to="/projects" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Project Portfolio</Link>
               </li>
               <li>
-                {isHome ? (
-                  <a href="#reviews" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Client Testimonials</a>
-                ) : (
-                  <Link to="/reviews" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Client Testimonials</Link>
-                )}
+                <Link to="/reviews" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Client Testimonials</Link>
               </li>
               <li>
-                {isHome ? (
-                  <a href="#estimate" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Get a Free Estimate</a>
-                ) : (
-                  <Link to="/contact" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Get a Free Estimate</Link>
-                )}
+                <Link to="/estimate" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Get a Free Estimate</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary hover:translate-x-1 transition-all inline-block">Contact & Consultations</Link>
               </li>
             </ul>
           </div>
@@ -911,24 +744,18 @@ export function Footer() {
             </div>
             <ul className="space-y-3.5 text-xs sm:text-[13px] text-slate-400 font-medium">
               {[
-                "Kitchen Remodeling",
-                "Master Bathrooms & Spas",
-                "Whole-Home Additions",
-                "Foundation & Piering Repair",
-                "Hardwood & Stone Flooring",
-                "Basement Living Suites",
-                "Architectural Millwork",
+                { title: "Kitchen Remodeling", to: "/services/kitchen-remodeling" },
+                { title: "Master Bathrooms & Spas", to: "/services/bathroom-remodeling" },
+                { title: "Whole-Home Additions", to: "/services/whole-home-renovation" },
+                { title: "Foundation & Piering Repair", to: "/services/foundation-repair" },
+                { title: "Hardwood & Stone Flooring", to: "/services/flooring" },
+                { title: "Basement Living Suites", to: "/services/basement-finishing" },
+                { title: "Architectural Millwork", to: "/services/custom-millwork" },
               ].map((specialty) => (
-                <li key={specialty}>
-                  {isHome ? (
-                    <a href="#services" className="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">
-                      {specialty}
-                    </a>
-                  ) : (
-                    <Link to="/services" className="hover:text-primary hover:translate-x-1 transition-all inline-block">
-                      {specialty}
-                    </Link>
-                  )}
+                <li key={specialty.title}>
+                  <Link to={specialty.to} className="hover:text-primary hover:translate-x-1 transition-all inline-block">
+                    {specialty.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -944,8 +771,8 @@ export function Footer() {
             </div>
 
             <div className="space-y-3.5 text-xs sm:text-[13px] text-slate-300">
-              <a 
-                href="tel:8164623599" 
+              <a
+                href="tel:8164623599"
                 className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-xl hover:bg-white/[0.04] border border-transparent hover:border-primary/20 transition-all cursor-pointer"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/15 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -957,8 +784,8 @@ export function Footer() {
                 </div>
               </a>
 
-              <a 
-                href="mailto:pid.2014.d@gmail.com" 
+              <a
+                href="mailto:pid.2014.d@gmail.com"
                 className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-xl hover:bg-white/[0.04] border border-transparent hover:border-primary/20 transition-all cursor-pointer"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/15 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -1010,8 +837,8 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-2 text-[11px]">
             {["Grandview", "Overland Park", "Lee's Summit", "Leawood", "Prairie Village", "Brookside", "Country Club Plaza", "Mission Hills", "South Kansas City"].map((area) => (
-              <span 
-                key={area} 
+              <span
+                key={area}
                 className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:border-primary/40 transition-colors font-medium cursor-default"
               >
                 {area}
@@ -1033,17 +860,9 @@ export function Footer() {
             <span className="text-white/20">•</span>
             <span className="text-slate-300">20-Year Structural Warranty</span>
             <span className="text-white/20">•</span>
-            {isHome ? (
-              <a href="#faq" className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</a>
-            ) : (
-              <Link to="/contact" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            )}
+            <Link to="/contact" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <span className="text-white/20">•</span>
-            {isHome ? (
-              <a href="#faq" className="hover:text-primary transition-colors cursor-pointer">Terms of Service</a>
-            ) : (
-              <Link to="/contact" className="hover:text-primary transition-colors">Terms of Service</Link>
-            )}
+            <Link to="/contact" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
 
           <button
@@ -1071,25 +890,25 @@ export function SiteLayout({ children, overlay = false }: { children: ReactNode;
   );
 }
 
-export function SitePage({ 
-  eyebrow, 
-  title, 
-  image, 
-  children 
-}: { 
-  eyebrow: string; 
-  title: string; 
-  image: string; 
-  children: ReactNode 
+export function SitePage({
+  eyebrow,
+  title,
+  image,
+  children
+}: {
+  eyebrow: string;
+  title: string;
+  image: string;
+  children: ReactNode
 }) {
   return (
     <SiteLayout overlay={false}>
       {/* Subpage Luxury Header */}
       <section className="relative overflow-hidden bg-background pt-24 pb-20 lg:pt-32 lg:pb-28 border-b border-border/30">
-        <img 
-          src={image} 
-          alt={title} 
-          className="absolute inset-0 size-full object-cover opacity-20" 
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 size-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40" />
         <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
