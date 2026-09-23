@@ -47,6 +47,30 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (url.pathname === "/api/send-lead" && request.method === "POST") {
+        try {
+          const body = await request.json();
+          const { handleLeadEmail } = await import("./server/email-handler");
+          const result = await handleLeadEmail(body);
+          return new Response(JSON.stringify(result), {
+            status: result.success ? 200 : 400,
+            headers: {
+              "content-type": "application/json",
+              "cache-control": "no-store",
+            },
+          });
+        } catch (apiErr: any) {
+          return new Response(
+            JSON.stringify({ success: false, error: apiErr?.message || "Invalid payload" }),
+            {
+              status: 400,
+              headers: { "content-type": "application/json" },
+            },
+          );
+        }
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

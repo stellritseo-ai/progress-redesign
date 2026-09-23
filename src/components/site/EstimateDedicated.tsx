@@ -23,11 +23,15 @@ import {
   Upload, 
   UtensilsCrossed, 
   Wrench, 
-  Bath 
+  Bath,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { submitLeadRequest } from "@/lib/send-lead";
 
 export function EstimateDedicated() {
+  const [loading, setLoading] = useState(false);
   // Step 1: Selected Renovation Types (Multi-select)
   const [selectedTypes, setSelectedTypes] = useState<string[]>([
     "Kitchen Remodeling & Custom Cabinetry",
@@ -124,9 +128,45 @@ export function EstimateDedicated() {
 
 
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formData.fullName.trim() || !formData.phone.trim()) {
+      toast.error("Please provide your name and phone number.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const selectedTierObj = tiers.find((t) => t.id === selectedTier);
+      const selectedSizeObj = sizes.find((s) => s.id === selectedSize);
+
+      const res = await submitLeadRequest({
+        sourceForm: "Dedicated Estimate Page",
+        name: formData.fullName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        address: formData.address.trim(),
+        service: selectedTypes.join(", "),
+        tier: `${selectedTierObj?.label} (${selectedTierObj?.level})`,
+        scope: `${formData.budgetRange} | ${selectedSizeObj?.label} (${selectedSizeObj?.sub})`,
+        timeline: formData.timeline,
+        notes: [
+          formData.details ? `Details: ${formData.details}` : "",
+          formData.inspirationLink ? `Inspiration: ${formData.inspirationLink}` : "",
+        ].filter(Boolean).join("\n"),
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        toast.success("Formal proposal request received! A Senior Project Manager will reach out within 24 hours.");
+      } else {
+        toast.error(res.error || "Failed to submit request. Please call us at (816) 462-3599.");
+      }
+    } catch {
+      toast.error("Failed to submit request. Please call us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const scrollToEstimator = () => {
@@ -711,11 +751,21 @@ export function EstimateDedicated() {
                   <div className="pt-3 space-y-2.5">
                     <Button
                       type="submit"
+                      disabled={loading}
                       size="lg"
                       className="w-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-12 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider"
                     >
-                      <span>REQUEST MY FORMAL PROPOSAL</span>
-                      <ArrowRight className="ml-2 w-4 h-4" />
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          <span>SENDING YOUR REQUEST...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>REQUEST MY FORMAL PROPOSAL</span>
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </>
+                      )}
                     </Button>
 
                     <p className="text-[11px] text-muted-foreground text-center leading-relaxed">

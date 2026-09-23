@@ -6,11 +6,13 @@ import {
   Phone, 
   Send, 
   Sparkles, 
-  X 
+  X,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { submitLeadRequest } from "@/lib/send-lead";
 
 export function FloatingConcierge() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,23 +21,43 @@ export function FloatingConcierge() {
   const [service, setService] = useState("Kitchen Remodel");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) {
       toast.error("Please enter your name and phone number.");
       return;
     }
 
-    setSubmitted(true);
-    toast.success("Message received! A project manager will call you shortly.");
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsOpen(false);
-      setName("");
-      setPhone("");
-      setMessage("");
-    }, 2000);
+    setLoading(true);
+    try {
+      const res = await submitLeadRequest({
+        sourceForm: "Floating Concierge Widget",
+        name: name.trim(),
+        phone: phone.trim(),
+        service,
+        notes: message.trim(),
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        toast.success("Callback request sent! A project manager will call you shortly.");
+        setTimeout(() => {
+          setSubmitted(false);
+          setIsOpen(false);
+          setName("");
+          setPhone("");
+          setMessage("");
+        }, 2500);
+      } else {
+        toast.error(res.error || "Failed to send request. Please call us directly.");
+      }
+    } catch {
+      toast.error("Failed to send request. Please call (816) 462-3599 directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -164,9 +186,18 @@ export function FloatingConcierge() {
 
                 <Button
                   type="submit"
+                  disabled={loading}
                   className="w-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-10 rounded-xl font-bold text-xs"
                 >
-                  <Send className="w-3.5 h-3.5 mr-1.5" /> Request Quick Call Back
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5 mr-1.5" /> Request Quick Call Back
+                    </>
+                  )}
                 </Button>
               </form>
             )}

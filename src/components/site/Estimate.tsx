@@ -14,12 +14,14 @@ import {
   Sparkles, 
   Tv, 
   User, 
-  UtensilsCrossed 
+  UtensilsCrossed,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { submitLeadRequest } from "@/lib/send-lead";
 
 export function Estimate() {
   const [selectedService, setSelectedService] = useState("kitchen");
@@ -73,7 +75,7 @@ export function Estimate() {
   const activeTierObj = tiers.find((t) => t.id === selectedTier) ?? tiers[1];
   const activeScopeObj = scopes.find((sc) => sc.id === selectedScope) ?? scopes[1];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim() || !email.trim()) {
       toast.error("Please fill in your name, phone number, and email.");
@@ -81,17 +83,36 @@ export function Estimate() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const res = await submitLeadRequest({
+        sourceForm: "Interactive Scope Calculator (Home Page)",
+        name: name.trim(),
+        phone: phone.trim(),
+        email: email.trim(),
+        address: address.trim(),
+        service: activeServiceObj?.label,
+        tier: `${activeTierObj?.label} (${activeTierObj?.badge})`,
+        scope: `${activeScopeObj?.label} (${activeScopeObj?.size})`,
+        notes: notes.trim(),
+      });
+
+      if (res.success) {
+        toast.success(
+          `Thank you, ${name}! Your complimentary 3D consultation dossier has been scheduled. A Senior Project Architect will contact you within 24 hours.`
+        );
+        setName("");
+        setPhone("");
+        setEmail("");
+        setAddress("");
+        setNotes("");
+      } else {
+        toast.error(res.error || "Failed to submit estimate request. Please call us at (816) 462-3599.");
+      }
+    } catch {
+      toast.error("Failed to submit estimate request. Please call us directly.");
+    } finally {
       setIsSubmitting(false);
-      toast.success(
-        `Thank you, ${name}! Your complimentary 3D consultation dossier has been scheduled. A Senior Project Architect will contact you within 24 hours.`
-      );
-      setName("");
-      setPhone("");
-      setEmail("");
-      setAddress("");
-      setNotes("");
-    }, 850);
+    }
   };
 
   return (

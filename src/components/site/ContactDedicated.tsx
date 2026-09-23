@@ -17,12 +17,16 @@ import {
   PhoneCall, 
   ShieldAlert, 
   ShieldCheck, 
-  Sparkles 
+  Sparkles,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { submitLeadRequest } from "@/lib/send-lead";
 
 export function ContactDedicated() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Form State
@@ -37,9 +41,38 @@ export function ContactDedicated() {
     hearAbout: "Google",
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formData.fullName.trim() || !formData.phone.trim()) {
+      toast.error("Please enter your name and phone number.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await submitLeadRequest({
+        sourceForm: "Dedicated Contact Page",
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        address: formData.address,
+        service: formData.projectType,
+        budget: formData.budgetRange,
+        hearAbout: formData.hearAbout,
+        notes: formData.details,
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        toast.success("Proposal request received! Our team will contact you shortly.");
+      } else {
+        toast.error(res.error || "Failed to submit request. Please call us directly.");
+      }
+    } catch {
+      toast.error("An error occurred. Please call us at (816) 462-3599.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const expectationSteps = [
@@ -463,11 +496,21 @@ export function ContactDedicated() {
                     <div className="pt-2 space-y-2.5">
                       <Button
                         type="submit"
+                        disabled={loading}
                         size="lg"
                         className="w-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 h-12 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider"
                       >
-                        <span>SUBMIT REQUEST</span>
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                        {loading ? (
+                          <>
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                            <span>SUBMITTING REQUEST...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>SUBMIT REQUEST</span>
+                            <ArrowRight className="ml-2 w-4 h-4" />
+                          </>
+                        )}
                       </Button>
 
                       <p className="text-[11px] text-muted-foreground text-center leading-relaxed">

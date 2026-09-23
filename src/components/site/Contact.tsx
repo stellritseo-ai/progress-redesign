@@ -1,13 +1,51 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { submitLeadRequest } from "@/lib/send-lead";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
-  
-  const submit = (e: FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    service: "Complete Renovation",
+    details: "",
+  });
+
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      toast.error("Please enter your name and phone number.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await submitLeadRequest({
+        sourceForm: "General Contact Form (Homepage)",
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        address: formData.address,
+        service: formData.service,
+        notes: formData.details,
+      });
+
+      if (res.success) {
+        setSent(true);
+        toast.success("Request sent successfully! Our team will contact you shortly.");
+      } else {
+        toast.error(res.error || "Failed to send inquiry. Please call us at (816) 462-3599.");
+      }
+    } catch {
+      toast.error("Something went wrong. Please call us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -53,28 +91,89 @@ export function Contact() {
               <p className="mt-4 text-muted-foreground max-w-sm leading-relaxed">
                 Thank you for your interest. A member of our design and construction team will follow up shortly to discuss your project.
               </p>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setSent(false);
+                  setFormData({
+                    name: "",
+                    phone: "",
+                    email: "",
+                    address: "",
+                    service: "Complete Renovation",
+                    details: "",
+                  });
+                }}
+                className="mt-6 rounded-full text-xs font-bold"
+              >
+                Send Another Inquiry
+              </Button>
             </div>
           ) : (
             <form onSubmit={submit} className="relative z-10 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              {["Name", "Phone", "Email", "Address"].map((f) => (
-                <label key={f} className="block group">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
-                    {f}
-                  </span>
-                  <input 
-                    required={f !== "Address"} 
-                    type={f === "Email" ? "email" : f === "Phone" ? "tel" : "text"} 
-                    className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
-                    placeholder={`Enter your ${f.toLowerCase()}`}
-                  />
-                </label>
-              ))}
+              <label className="block group">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
+                  Name *
+                </span>
+                <input 
+                  required
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
+                  placeholder="Enter your name"
+                />
+              </label>
+
+              <label className="block group">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
+                  Phone *
+                </span>
+                <input 
+                  required
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
+                  placeholder="Enter your phone"
+                />
+              </label>
+
+              <label className="block group">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
+                  Email
+                </span>
+                <input 
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
+                  placeholder="Enter your email"
+                />
+              </label>
+
+              <label className="block group">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
+                  Address
+                </span>
+                <input 
+                  type="text"
+                  value={formData.address}
+                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
+                  placeholder="City or neighborhood"
+                />
+              </label>
               
               <label className="block sm:col-span-2 group">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground transition-colors group-focus-within:text-primary">
                   Service Needed
                 </span>
-                <select className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary appearance-none cursor-pointer">
+                <select 
+                  value={formData.service}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="mt-2 block w-full bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary appearance-none cursor-pointer"
+                >
                   <option className="bg-card">Complete Renovation</option>
                   <option className="bg-card">Foundation Repair</option>
                   <option className="bg-card">Flooring Installation</option>
@@ -90,13 +189,28 @@ export function Contact() {
                 </span>
                 <textarea 
                   rows={4} 
+                  value={formData.details}
+                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                   className="mt-2 block w-full resize-none bg-transparent border-b border-border/50 py-3 text-base text-foreground outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/30" 
                   placeholder="Tell us briefly about your vision..."
                 />
               </label>
               
-              <Button size="lg" className="mt-6 sm:col-span-2 h-14 rounded-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 text-xs tracking-widest uppercase font-bold">
-                Request a Free Estimate <ArrowRight className="ml-2 w-4 h-4" />
+              <Button 
+                type="submit"
+                disabled={loading}
+                size="lg" 
+                className="mt-6 sm:col-span-2 h-14 rounded-full bg-primary text-primary-foreground btn-glow hover:bg-primary/90 text-xs tracking-widest uppercase font-bold"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting Request...
+                  </>
+                ) : (
+                  <>
+                    Request a Free Estimate <ArrowRight className="ml-2 w-4 h-4" />
+                  </>
+                )}
               </Button>
             </form>
           )}

@@ -92,10 +92,10 @@ export function Logo({
         src={logoImg}
         alt="Progress Interior Designs"
         className={`w-auto object-contain transition-all duration-200 drop-shadow-sm dark:brightness-110 ${size === "sm"
-            ? "h-9 xs:h-10 sm:h-11"
-            : size === "lg"
-              ? "h-14 xs:h-16 sm:h-20"
-              : "h-[44px] xs:h-[50px] sm:h-[58px] lg:h-[68px]"
+          ? "h-9 xs:h-10 sm:h-11"
+          : size === "lg"
+            ? "h-14 xs:h-16 sm:h-20"
+            : "h-[44px] xs:h-[50px] sm:h-[58px] lg:h-[68px]"
           }`}
         onError={(e) => {
           e.currentTarget.src = "/logo.png";
@@ -191,10 +191,10 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         <nav
           aria-label="Main Navigation"
           className={`border-b transition-all duration-300 flex items-center h-20 ${scrolled
-              ? "glass-nav shadow-2xl"
-              : overlay
-                ? "bg-background/80 backdrop-blur-md border-border/20"
-                : "bg-background/95 backdrop-blur-md border-border/30"
+            ? "glass-nav shadow-2xl"
+            : overlay
+              ? "bg-background/80 backdrop-blur-md border-border/20"
+              : "bg-background/95 backdrop-blur-md border-border/30"
             }`}
         >
           <div className="mx-auto max-w-[1440px] w-full px-5 lg:px-8 flex items-center justify-between">
@@ -219,7 +219,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                   </Link>
 
                   {/* Services Mega Dropdown */}
-                  <div 
+                  <div
                     className="relative"
                     onMouseEnter={() => setServicesMenuOpen(true)}
                     onMouseLeave={() => setServicesMenuOpen(false)}
@@ -249,8 +249,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                           {serviceLinks.map((item) => {
                             const Icon = item.icon;
                             return (
-                              <Link 
-                                key={item.title} 
+                              <Link
+                                key={item.title}
                                 to={item.to}
                                 onClick={() => setServicesMenuOpen(false)}
                                 className="group flex items-start gap-3.5 p-3 rounded-xl hover:bg-muted/70 border border-transparent hover:border-primary/20 transition-all cursor-pointer"
@@ -850,7 +850,7 @@ export function Footer() {
         {/* Bottom copyright, guarantees, and back to top */}
         <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-5 text-xs text-slate-400">
           <p className="text-center md:text-left">
-            © {new Date().getFullYear()} Progress Interior Designs LLC. All rights reserved.
+            © {new Date().getFullYear()} Progress Interior Designs LLC. All rights reserved. Design By StellR IT LLC
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-[11px]">
@@ -860,9 +860,6 @@ export function Footer() {
             <span className="text-white/20">•</span>
             <span className="text-slate-300">20-Year Structural Warranty</span>
             <span className="text-white/20">•</span>
-            <Link to="/contact" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/contact" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
 
           <button
