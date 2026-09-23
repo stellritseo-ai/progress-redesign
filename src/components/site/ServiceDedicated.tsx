@@ -582,7 +582,7 @@ export function ServiceDedicated({ data }: { data: ServiceDetailData }) {
             {siblingServices.slice(0, 4).map((sibling) => (
               <Link
                 key={sibling.slug}
-                to={`/services/${sibling.slug}`}
+                to={`/services/${sibling.slug}` as any}
                 className="group p-4 rounded-2xl bg-card/60 dark:bg-card/40 border border-border/40 hover:border-primary/40 transition-all space-y-2 block"
               >
                 <span className="text-[10px] font-bold uppercase tracking-wider text-primary">

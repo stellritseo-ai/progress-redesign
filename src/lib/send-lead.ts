@@ -2,15 +2,15 @@ export interface LeadSubmissionPayload {
   sourceForm: string;
   name: string;
   phone: string;
-  email?: string;
-  address?: string;
-  service?: string;
-  tier?: string;
-  scope?: string;
-  timeline?: string;
-  budget?: string;
-  hearAbout?: string;
-  notes?: string;
+  email?: string | undefined;
+  address?: string | undefined;
+  service?: string | undefined;
+  tier?: string | undefined;
+  scope?: string | undefined;
+  timeline?: string | undefined;
+  budget?: string | undefined;
+  hearAbout?: string | undefined;
+  notes?: string | undefined;
 }
 
 export async function submitLeadRequest(

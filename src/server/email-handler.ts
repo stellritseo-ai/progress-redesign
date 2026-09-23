@@ -2,15 +2,15 @@ export interface LeadSubmissionPayload {
   sourceForm: string;
   name: string;
   phone: string;
-  email?: string;
-  address?: string;
-  service?: string;
-  tier?: string;
-  scope?: string;
-  timeline?: string;
-  budget?: string;
-  hearAbout?: string;
-  notes?: string;
+  email?: string | undefined;
+  address?: string | undefined;
+  service?: string | undefined;
+  tier?: string | undefined;
+  scope?: string | undefined;
+  timeline?: string | undefined;
+  budget?: string | undefined;
+  hearAbout?: string | undefined;
+  notes?: string | undefined;
 }
 
 export async function handleLeadEmail(data: LeadSubmissionPayload): Promise<{ success: boolean; error?: string; messageId?: string }> {
@@ -39,13 +39,13 @@ export async function handleLeadEmail(data: LeadSubmissionPayload): Promise<{ su
   try {
     const nodemailer = await import("nodemailer");
 
-    const host = process.env.SMTP_HOST || "smtppro.zoho.com";
-    const port = Number(process.env.SMTP_PORT) || 465;
-    const secure = (process.env.SMTP_SECURE ?? "true") === "true";
-    const user = process.env.SMTP_USER || "eva@stellrit.com";
-    const pass = process.env.SMTP_PASS || "JqdnnPXn5VUu";
-    const fromName = process.env.SMTP_FROM_NAME || "Progress Interior Designs";
-    const recipient = process.env.LEAD_NOTIFICATION_EMAIL || "eva@stellrit.com";
+    const host = process.env["SMTP_HOST"] || "smtppro.zoho.com";
+    const port = Number(process.env["SMTP_PORT"]) || 465;
+    const secure = (process.env["SMTP_SECURE"] ?? "true") === "true";
+    const user = process.env["SMTP_USER"] || "eva@stellrit.com";
+    const pass = process.env["SMTP_PASS"] || "JqdnnPXn5VUu";
+    const fromName = process.env["SMTP_FROM_NAME"] || "Progress Interior Designs";
+    const recipient = process.env["LEAD_NOTIFICATION_EMAIL"] || "eva@stellrit.com";
 
     const transporter = nodemailer.createTransport({
       host,

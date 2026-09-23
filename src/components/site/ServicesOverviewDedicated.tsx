@@ -143,7 +143,7 @@ export function ServicesOverviewDedicated() {
             {allServicesList.map((service) => (
               <Link 
                 key={service.slug}
-                to={`/services/${service.slug}`}
+                to={`/services/${service.slug}` as any}
                 className="group rounded-3xl bg-card/70 dark:bg-card/40 border border-border/40 hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-2xl overflow-hidden flex flex-col justify-between"
               >
                 {/* Image Header with Badge */}

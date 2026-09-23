@@ -112,12 +112,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#FAF8F5" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "format-detection", content: "telephone=no" },
+      { property: "og:site_name", content: "Progress Interior Designs" },
+      { property: "og:locale", content: "en_US" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.progressinteriordesigns.com/hero-luxury-renovation.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://www.progressinteriordesigns.com/hero-luxury-renovation.jpg" },
       { name: "google-site-verification", content: "7PcKJppbDoPPOrhySAkgcQoI5rtFDG_5HTHqusnMWnU" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
       { rel: "icon", href: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
@@ -134,11 +141,75 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["HomeAndConstructionBusiness", "GeneralContractor"],
+  "@id": "https://www.progressinteriordesigns.com/#organization",
+  name: "Progress Interior Designs",
+  legalName: "Progress Interior Designs LLC",
+  url: "https://www.progressinteriordesigns.com",
+  logo: "https://www.progressinteriordesigns.com/logo.png",
+  image: "https://www.progressinteriordesigns.com/hero-luxury-renovation.jpg",
+  description:
+    "Progress Interior Designs is a luxury architectural renovation and general contracting firm based in Grandview, MO, specializing in high-end kitchen remodeling, master bathroom retreats, foundation repair, hardwood flooring, and whole-home transformations with fixed-price transparency.",
+  telephone: "+1-816-462-3599",
+  email: "eva@stellrit.com",
+  priceRange: "$$$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Grandview Metro",
+    addressLocality: "Grandview",
+    addressRegion: "MO",
+    postalCode: "64030",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.8858,
+    longitude: -94.533,
+  },
+  areaServed: [
+    { "@type": "City", name: "Grandview", sameAs: "https://en.wikipedia.org/wiki/Grandview,_Missouri" },
+    { "@type": "City", name: "Kansas City", sameAs: "https://en.wikipedia.org/wiki/Kansas_City,_Missouri" },
+    { "@type": "City", name: "Overland Park" },
+    { "@type": "City", name: "Leawood" },
+    { "@type": "City", name: "Olathe" },
+    { "@type": "City", name: "Lee's Summit" },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "08:00",
+      closes: "15:00",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "48",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -10,20 +10,29 @@ export const Route = createFileRoute("/contact")({
       },
       {
         name: "description",
-        content: "Whether you are planning a minor remodel or a full structural renovation, reach out to Progress Interior Designs today for expert guidance, transparent pricing, and uncompromising craftsmanship."
+        content: "Schedule your in-home consultation with Progress Interior Designs in Greater Kansas City. Master craftsmanship, transparent fixed pricing, and 24/7 availability."
+      },
+      {
+        name: "keywords",
+        content: "contact Progress Interior Designs, renovation estimate Kansas City, contractor consultation Grandview MO, home remodel quote"
       },
       { 
         property: "og:title", 
-        content: "Contact Progress Interior Designs | Let's Discuss Your Next Transformation" 
+        content: "Contact Progress Interior Designs | Consultation & Estimation" 
       },
       { 
         property: "og:description", 
-        content: "Schedule your in-home consultation with Progress Interior Designs. Full-service general contracting and luxury renovations across Dallas, Plano, Frisco & surrounding areas." 
+        content: "Connect directly with our master craftsmen and project architects to plan your luxury home renovation." 
       },
+      { property: "og:url", content: "https://www.progressinteriordesigns.com/contact" },
+      { property: "og:image", content: "https://www.progressinteriordesigns.com/hero-luxury-renovation.jpg" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" }
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact Progress Interior Designs" },
+      { name: "twitter:description", content: "Schedule an architectural consultation or request a project estimate." },
+      { name: "twitter:image", content: "https://www.progressinteriordesigns.com/hero-luxury-renovation.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }]
+    links: [{ rel: "canonical", href: "https://www.progressinteriordesigns.com/contact" }]
   }),
   component: () => (
     <SiteLayout overlay={false}>
